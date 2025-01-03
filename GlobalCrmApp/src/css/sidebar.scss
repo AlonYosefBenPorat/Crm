@@ -1,0 +1,149 @@
+.sidebar {
+  &.dark-mode {
+    background-color: #1f2937;
+    color: white;
+
+    .menu-button {
+      background-color: #1f2937;
+      color: white;
+    }
+
+    .sidebar-content {
+      background-color: #1f2937;
+      color: white;
+
+      .menu-item {
+        &:hover {
+          background-color: #374151;
+        }
+      }
+
+      .border-divider {
+        border-color: #374151;
+      }
+    }
+  }
+
+  &.light-mode {
+    background-color: white;
+    color: black;
+
+    .menu-button {
+      margin-right: 1rem;
+      margin-left: 1rem;
+      color: black;
+    }
+
+    .sidebar-content {
+      background-color: #d1d5db;
+      color: black;
+
+      .menu-item {
+        &:hover {
+          background-color: #e5e7eb;
+        }
+      }
+
+      .border-divider {
+        border-color: #e5e7eb;
+      }
+    }
+  }
+
+  .menu-button {
+    margin-right: 1rem;
+    margin-top: 4rem;
+    
+    margin-left: 1rem;
+    position: fixed;
+    top: 1.5rem;
+    
+    z-index: 50;
+    
+  }
+
+  .sidebar-content {
+    position: fixed;
+    left: 2;
+    top: 2.5rem;
+    transition: width 0.3s;
+    height: 100%;
+    overflow-y: auto;
+
+    &.expanded {
+      width: 16rem;
+    }
+
+    &.collapsed {
+      width: 4rem;
+    }
+
+    .p-6 {
+      padding: 2rem;
+    }
+
+    .mt-4 {
+      margin-top: 0.5rem;
+    }
+
+    .border-t {
+      border-top: 1px solid;
+    }
+
+    .menu-item {
+      padding: 0.5rem;
+      margin-top: 1.5rem;
+      display: flex;
+      align-items: center;
+
+      .icon-button {
+        margin-left: 0.5rem;
+      }
+
+      .text {
+        display: none;
+        margin-left: 2rem;
+        align-self: center;
+      }
+
+      &.active {
+        color: #2ba80c;
+      }
+
+      &.mobile-hidden {
+        display: block;
+      }
+
+      &.mobile-visible {
+        display: block;
+      }
+    }
+
+    &.expanded .menu-item .text {
+      display: inline;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    .menu-button {
+      display: none;
+    }
+
+    .sidebar-content {
+      width: 4rem !important;
+      top: -4rem;
+      
+      .menu-item {
+        .text {
+          display: none;
+        }
+
+        &.mobile-hidden {
+          display: none;
+        }
+      }
+    }
+  }
+}

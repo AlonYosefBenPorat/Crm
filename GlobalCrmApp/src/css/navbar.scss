@@ -1,0 +1,171 @@
+#app-nav {
+  background-color: rgb(209 213 219); /* Light mode background color */
+  color: rgb(8, 1, 1); /* Light mode text color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: fixed; /* Make the nav bar fixed */
+  top: 0;
+  width: 100%;
+  height: 60px;
+  z-index: 1000; /* Ensure it is above other content */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for better visibility */
+
+  .icon-button {
+    color: #240dee; 
+    border: rgb(16, 15, 15);
+    cursor: pointer;
+    font-size: 1.5rem; 
+  }
+
+  .logo {
+    height: 35px;
+    width: auto;
+  }
+
+  .profile-image {
+    margin-top: 0.5rem;
+    
+    margin-left: 2rem;
+    width: 40px; /* Adjust the size as needed */
+    height: 40px; /* Adjust the size as needed */
+    border-radius: 50%; /* Optional: make the profile image circular */
+    object-fit: cover; /* Ensure the image covers the entire area */
+  }
+
+  .nav-left {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Add gap between profile image and dark mode toggle */
+  }
+
+  .relative {
+    position: relative;
+  }
+
+  .group:hover #dropdown {
+    display: block;
+  }
+
+  #dropdown {
+    display: none;
+    position: fixed;
+    right: 4rem;
+   
+    z-index: 10;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 11rem;
+    .dropdown-item {
+      padding: 0.5rem 1rem;
+      text-align: left;
+      &:hover {
+        background-color: #f3f4f6;
+      }
+    }
+    .dark-mode & {
+      background-color: #374151;
+      .dropdown-item {
+        color: #d1d5db;
+        &:hover {
+          background-color: #4b5563;
+          color: white;
+        }
+      }
+    }
+  }
+
+  // Dark mode styles nested inside #app-nav
+  body.dark-mode & {
+    background-color: #1F2937; /* Dark mode background color */
+    color: white; /* Dark mode text color */
+
+    .icon-button {
+      color: #d0e3ff;
+    }
+  }
+}
+
+// Optional: Dark mode for general body styles
+body.dark-mode {
+  background-color: #060000d0;
+  color: rgb(92, 90, 90);
+}
+
+// Mobile styles
+@media (max-width: 400px) {
+  #app-nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+
+    .nav-left, .nav-right {
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 0.5rem;
+    }
+
+    .profile-image {
+      width: 40px; /* Adjust the size as needed */
+      height: 40px; /* Adjust the size as needed */
+      position: absolute;
+      top: -3.5rem;
+      right: -13rem;
+    }
+
+    .icon-button {
+      font-size: 1.2rem; /* Adjust the size as needed */
+    }
+
+    h3 {
+      font-size: 1rem; /* Adjust the size as needed */
+    }
+
+    .icon-button, .nav-right > button {
+      display: none; /* Hide sun/moon icons on mobile */
+    }
+
+    .logo {
+      display: none; /* Hide logo on mobile */
+    }
+
+    #dropdown {
+      top: 3rem; /* Adjust the position to be below the profile image */
+      right: 0.5rem;
+    }
+  }
+}
+
+// Specific styles for 412x915 screen size
+@media (max-width: 412px) and (max-height: 915px) {
+  #app-nav {
+    .nav-left {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-right {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .profile-image {
+      width: 35px; /* Adjust the size as needed */
+      height: 35px; /* Adjust the size as needed */
+    }
+
+    h3 {
+      font-size: 0.9rem; /* Adjust the size as needed */
+    }
+  }
+}

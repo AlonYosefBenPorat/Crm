@@ -1,0 +1,39 @@
+/* charts.scss */
+:root {
+  --color-blue: theme('colors.blue.light');
+  --color-gray: theme('colors.gray.light');
+}
+
+.dark-mode {
+  --color-blue: theme('colors.blue.dark');
+  --color-gray: theme('colors.gray.dark');
+}
+
+.chart-card {
+  color: var(--color-blue); /* This will adapt based on mode */
+  background-color: #fff; /* White background for the chart card */
+  border-radius: 0.5rem; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 1rem; /* Padding inside the chart card */
+  margin: 1rem; /* Margin around the chart card */
+}
+
+.tooltip-content {
+  color: var(--color-gray);
+}
+
+// Week navigation styling
+.week-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem; /* Adjust the gap as needed */
+  margin-top: 1rem;
+}
+
+// Charts grid styling
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+  gap: 1rem; /* Gap between the grid items */
+}

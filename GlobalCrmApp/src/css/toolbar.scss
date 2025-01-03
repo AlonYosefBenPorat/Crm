@@ -1,0 +1,97 @@
+.header-title {
+  font-size: 2rem; /* text-5xl */
+  font-weight: 900; /* font-black */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(to right, #6366f1, #14b8a6); /* from-indigo-500 to-teal-500 */
+}
+
+.header-gradient {
+  display: inline-block;
+}
+.toolbar {
+  .toolbar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items vertically */
+    border-bottom: 4px solid #d1d5db; /* Consistent border color */
+    padding: 1.5rem; /* Add some padding */
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    position: relative; /* Ensure the logo can be positioned absolutely */
+
+  
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: space-between; /* Space between items on larger screens */
+    }
+  }
+
+  .toolbar-list {
+  display: flex;
+  gap: 2rem; /* Increase space between icons */
+  margin-bottom: 0.5rem;
+  list-style: none;
+  padding: 0;
+
+  .icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #aaaad0, #0c6ce0); /* Gradient blue background */
+    color: white; /* Icon color */
+    font-size: 1.5rem; /* Icon size */
+    width: 2rem; /* Adjust size for the circle */
+    height: 2rem;
+    box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4); /* Subtle shadow */
+    transition: all 0.3s ease-in-out; /* Smooth hover transition */
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.5); /* Slight zoom on hover */
+      box-shadow: 0px 12px 24px rgba(78, 101, 137, 0.6); /* Enhanced shadow */
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  body.dark-mode .icon-button {
+    background: linear-gradient(135deg, #005f99, #0c57a1); /* Darker gradient for dark mode */
+    box-shadow: 0px 8px 16px rgba(0, 95, 153, 0.4); /* Darker shadow */
+  }
+}
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    width: 30%; /* Responsive width for search bar */
+    
+    input {
+      border: 1px solid #d1d5db; /* Border color for input */
+      border-radius: 0.25rem; /* Slightly rounded corners */
+      padding: 0.5em;
+      font-size: 1em;
+      width: 80%; // Percentage width for responsiveness
+    }
+
+    .search-icon {
+      color: #6b7280; // gray-500
+      font-size: 1.5rem; // Consistent size with other icons
+      margin-left: 0.5em;
+    }
+  }
+
+  .customer-logo {
+    width: 100px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensure the image fits within the specified dimensions */
+    position: absolute; /* Position the logo absolutely */
+    top: 25px; /* Adjust the top position as needed */
+    right: 10px; /* Adjust the right position as needed */
+  }
+}

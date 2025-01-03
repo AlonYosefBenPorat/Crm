@@ -1,0 +1,57 @@
+.ticket-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid rgb(201, 199, 199);
+  padding: 10px;
+  margin-top: 45px; /* Add margin-top to start under the navbar */
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Adjust gap as needed */
+}
+
+.middle-section {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.right-section {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adjust gap as needed */
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #aaaad0, #0c6ce0); /* Gradient blue background */
+  color: white; /* Icon color */
+  font-size: 1.5rem; /* Icon size */
+  width: 2rem; /* Adjust size for the circle */
+  height: 2rem;
+  box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4); /* Subtle shadow */
+  transition: all 0.3s ease-in-out; /* Smooth hover transition */
+  border: none;
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  transform: scale(1.5); /* Slight zoom on hover */
+  box-shadow: 0px 12px 24px rgba(78, 101, 137, 0.6); /* Enhanced shadow */
+}
+
+body.dark-mode .icon-button {
+  background: linear-gradient(135deg, #005f99, #0c57a1); /* Darker gradient for dark mode */
+  box-shadow: 0px 8px 16px rgba(0, 95, 153, 0.4); /* Darker shadow */
+}
+
+body.light-mode .icon-button {
+  background: linear-gradient(135deg, #1e90ff, #1875ff); /* Lighter gradient for light mode */
+  box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4); /* Lighter shadow */
+}

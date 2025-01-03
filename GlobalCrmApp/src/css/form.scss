@@ -1,0 +1,88 @@
+/* form.scss */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #374151; // Tailwind's text-gray-900
+  }
+
+  .form-control {
+    padding: 0.625rem; // Tailwind's p-2.5
+    border: 1px solid #d1d5db; // Tailwind's border-gray-300
+    border-radius: 0.5rem; // Tailwind's rounded-lg
+    font-size: 0.875rem; // Tailwind's text-sm
+    color: #374151;
+
+    &:focus {
+      outline: none;
+      border-color: #3b82f6; // Tailwind's focus:border-blue-500
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); // Tailwind's focus:ring-blue-500
+    }
+  }
+
+  .error-message {
+    color: #f87171; // Tailwind's text-red-500
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Style the select dropdown */
+.select-wrapper {
+  position: relative;
+  width: 16rem; // Tailwind's w-64
+  display: inline-block;
+
+  select {
+    appearance: none;
+    width: 100%;
+    padding: 0.625rem; // Tailwind's p-2.5
+    border: 1px solid #d1d5db; // Tailwind's border-gray-400
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    font-size: 0.875rem;
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+    }
+  }
+
+  .select-icon {
+    position: absolute;
+    inset-y: 0;
+    right: 0.5rem;
+    display: flex;
+    align-items: center;
+    color: #4b5563; // Tailwind's text-gray-700
+    pointer-events: none;
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+}
+
+/* Submit Button */
+.submit-btn {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: linear-gradient(to right, #4ade80, #22c55e, #16a34a);
+  border-radius: 0.5rem;
+  transition: background 0.2s ease;
+  &:hover {
+    background: linear-gradient(to right, #22c55e, #16a34a, #15803d); // Darker on hover
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.5); // Focus ring effect
+  }
+}

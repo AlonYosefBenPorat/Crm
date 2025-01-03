@@ -1,0 +1,47 @@
+.system-info {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.system-info h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.system-info section {
+  margin-bottom: 20px;
+}
+
+.operation {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.operation .icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.operation h3 {
+  margin: 0;
+}
+
+.operation p {
+  margin: 0;
+}
+
+.system-info p {
+  line-height: 1.6;
+}
+
+.system-info ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.system-info ul li {
+  margin-bottom: 10px;
+}

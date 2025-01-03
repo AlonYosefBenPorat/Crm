@@ -1,0 +1,110 @@
+.sub-activity-tabs {
+  display: flex;
+  gap: 20px;
+  
+  
+
+  .tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+ 
+    margin-top: 35px;
+    
+
+    .tab-button {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      border-radius: 8px;
+      width: 100%;
+      background-color: #f9f9f9;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+
+      &.active {
+        background-color: #1cb6c7;
+        color: white;
+        text-align: center;
+      }
+
+      &:hover {
+        background-color: #1cb6c7;
+        color: #333;
+      }
+
+      &.dark {
+        background-color: #333;
+        color: #f9f9f9;
+
+        &.active {
+          background-color: #005f99;
+          color: white;
+        }
+
+        &:hover {
+          background-color: #444;
+          color: #f9f9f9;
+        }
+      }
+    }
+  }
+.button-container {
+  display: flex;
+  gap: 10px; /* Adjust the gap between buttons as needed */
+}
+
+.icon-button-square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+  border-radius: 8px; /* Rounded borders */
+  background: linear-gradient(135deg, #aaaad0, #043d92); /* Gradient blue background */
+  color: white; /* Icon color */
+  font-size: 1.5rem; /* Icon size */
+  width: 4rem; /* Adjust size for the button */
+  height: 2rem;
+  box-shadow: 0px 8px 16px rgba(9, 10, 10, 0.4); /* Subtle shadow */
+  transition: all 0.3s ease-in-out; /* Smooth hover transition */
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+    box-shadow: 0px 12px 24px rgba(9, 10, 10, 0.6); /* Enhanced shadow */
+  }
+}
+  .tab-content-container {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+    border-radius: 8px;
+
+    .tab-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .tab-content {
+      font-size: 1rem;
+      color: #666;
+    }
+
+    &.dark {
+      background-color: #333;
+      color: #f9f9f9;
+
+      .tab-title {
+        color: white;
+      }
+
+      .tab-content {
+        color: #ccc;
+      }
+    }
+  }
+}

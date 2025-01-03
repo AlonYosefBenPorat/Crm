@@ -1,0 +1,301 @@
+// General container styling for dark/light mode
+.customer-permission-content {
+  padding: 1rem;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+}
+
+.border-bottom-gray-bold {
+  border-bottom: 4px solid #d1d5db; /* border-gray-300 */
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.h2 {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 600; /* font-semibold */
+  text-align: center;
+}
+
+.btn {
+  background-color: #3b82f6; /* bg-blue-500 */
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px; /* rounded-full */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  margin-left: 0.5rem; /* ml-2 */
+  border: 1px solid var(--border-primary);
+  cursor: pointer;
+  margin-top: 1rem;
+  text-align: center;
+
+  &:hover {
+    background-color: #2563eb; /* bg-blue-600 */
+  }
+
+  svg {
+    margin-right: 0.25rem;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  // Dark mode styles
+  body.darkmode & {
+    background-color: #1f2937; /* bg-gray-800 */
+    color: #d1d5db; /* text-gray-300 */
+    border-color: gray;
+  }
+}
+
+// User dropdown styling
+.customer-permission-form {
+  form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    label {
+      font-weight: 600; /* font-semibold */
+      margin-right: 0.75rem; /* mr-3 */
+    }
+
+    select {
+      border: 1px solid #d1d5db; /* border-gray-400 */
+      padding: 0.5rem;
+      border-radius: 0.375rem;
+      transition: background-color 0.3s;
+      padding-left: 2.5rem;
+      margin-top: 1rem;
+
+      body.darkmode & {
+        background-color: #1f2937; /* bg-gray-800 */
+        color: #e5e7eb; /* text-gray-200 */
+        border-color: gray;
+      }
+    }
+  }
+}
+
+// Table styling
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  color: var(--text-primary);
+
+  thead {
+    tr {
+      border-bottom: 2px solid var(--border-primary);
+    }
+  }
+
+  th, td {
+    padding: 0.5rem 0.25rem; /* py-2 px-4 */
+    border-bottom: 1px solid #d1d5db; /* border-gray-300 */
+    text-align: center;
+
+    // Dark mode table cell styling
+    body.darkmode & {
+      border-color: #374151; /* border-gray-700 */
+    }
+  }
+
+  .notify-user-cell {
+    width: 100%; /* Ensure the cell width adjusts to the content */
+    padding: 0.5rem; /* Adjust padding as needed */
+    display: flex; /* Use Flexbox */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+  }
+
+  tbody tr:hover {
+    background-color: #f3f4f6; /* bg-gray-100 */
+    cursor: pointer;
+
+    body.darkmode & {
+      background-color: #374151; /* bg-gray-700 */
+    }
+  }
+
+  .btn {
+    padding: 0.25rem;
+    color: black;
+    background-color: white;
+  }
+}
+
+// Modern select styling
+.modern-select {
+  width: 25%;
+  padding: 0.5rem 1rem;
+  border: 3px solid #ccc;
+  border-radius: 0.375rem; /* Rounded corners */
+  background-color: #fff;
+  color: #333;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  margin: 2px;
+
+  &:focus {
+    border-color: #0b6ec9; 
+    box-shadow: 0 0 0 3px rgba(4, 100, 160, 0.25); /* Focus shadow */
+    outline: none;
+  }
+
+  &:hover {
+    border-color: #0910ca; /* Change to your desired hover color */
+  }
+
+  option {
+    background-color: #fff;
+    color: #333;
+    font-weight: bold;
+  }
+
+  body.darkmode & {
+    background-color: #333;
+    color: #fff;
+    border-color: #555;
+
+    &:focus {
+      border-color: #1a73e8; /* Change to your desired focus color for dark mode */
+      box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.25); /* Focus shadow for dark mode */
+    }
+
+    &:hover {
+      border-color: #1a73e8; /* Change to your desired hover color for dark mode */
+    }
+
+    option {
+      background-color: #333;
+      color: #fff;
+    }
+  }
+}
+
+// Search container styling
+.search-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  border: 2px solid #ccc;
+  border-radius: 0.375rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+
+  &:focus {
+    border-color: #007bff; /* Change to your desired focus color */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Focus shadow */
+    outline: none;
+  }
+
+  &:hover {
+    border-color: #0056b3; /* Change to your desired hover color */
+  }
+}
+
+// Pagination styling
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+
+   .btn {
+    background-color: #3b82f6; /* bg-blue-500 */
+    color: white;
+    font-weight: bold;
+    padding: .5rem 2rem ;
+    border-radius: 9999px; /* rounded-full */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    margin-bottom: 1rem;
+    margin-left: 1.5rem; /* ml-2 */
+    border: 1px solid var(--border-primary);
+    cursor: pointer;
+    margin-top: 1rem;
+    text-align: center;
+    &:hover {
+      background-color: #2563eb; /* bg-blue-600 */
+    }
+
+    svg {
+      margin-right: 0.25rem;
+      width: 1rem;
+      height: 1rem;
+    }
+
+    // Dark mode styles
+    body.darkmode & {
+      background-color: #1f2937; /* bg-gray-800 */
+      color: #d1d5db; /* text-gray-300 */
+      border-color: gray;
+    }
+  }
+}
+
+// Icon button styling
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #aaaad0, #0c6ce0); /* Gradient blue background */
+  color: white; /* Icon color */
+  font-size: 1.5rem; /* Icon size */
+  width: 2rem; /* Adjust size for the circle */
+  height: 2rem;
+  box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4); /* Subtle shadow */
+  transition: all 0.3s ease-in-out; /* Smooth hover transition */
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem; /* Add margin space between icons */
+
+  &:hover {
+    transform: scale(1.5); /* Slight zoom on hover */
+    box-shadow: 0px 12px 24px rgba(78, 101, 137, 0.6); /* Enhanced shadow */
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  body.darkmode & {
+    background: linear-gradient(135deg, #005f99, #0c57a1); /* Darker gradient for dark mode */
+    box-shadow: 0px 8px 16px rgba(0, 95, 153, 0.4); /* Darker shadow */
+  }
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  border: 2px solid #ccc;
+  border-radius: 0.375rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+
+  &:focus {
+    border-color: #007bff; /* Change to your desired focus color */
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Focus shadow */
+    outline: none;
+  }
+
+  &:hover {
+    border-color: #0056b3; /* Change to your desired hover color */
+  }
+}
+  
+}
