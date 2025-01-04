@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import '../../css/extendSideWindow.scss'; // Import the SCSS file for styling
+import '../../css/extendSideWindow.scss'; 
 import { IoClose } from 'react-icons/io5';
 import { FiKey, FiTrash } from 'react-icons/fi';
 import { DarkModeContext } from '../../contexts/DarkModeContext';
@@ -122,14 +122,12 @@ const EditUser: React.FC<EditUserProps> = ({ onClose, userId, refreshTable }) =>
       if (err.response && err.response.data && err.response.data.errors) {
         const validationErrors = err.response.data.errors;
         console.error('Validation errors:', validationErrors);
-        console.log('Validation errors:', validationErrors);
         const errorMessages = Object.values(validationErrors).flat().join(' ');
         setError(`Validation errors occurred: ${errorMessages}`);
       } else {
         showErrorDialog('An error occurred while updating the user.');
         setError('An error occurred while updating the user.');
-        console.error('An error occurred while updating the user:', err);
-        console.log('An error occurred while updating the user:', err);
+        console.error('An error occurred while updating the user:', err)
       }
     } finally {
       setIsLoading(false);
@@ -185,14 +183,14 @@ const EditUser: React.FC<EditUserProps> = ({ onClose, userId, refreshTable }) =>
                 <h2 className='text-center' >Edit Details to {`${values.email}`}</h2>
           <ul className="toolbar-list">
       <li>
-        <button className="icon-button" title="Reset Password" onClick={toggleResetPassword}>
-          <FiKey />
-        </button>
+         <FiKey aria-label='Reset User Password'  className="icon-button" title="Reset Password" onClick={toggleResetPassword}></FiKey>
+          
+        
       </li>
       <li>
-        <button className="icon-button" title="Delete User" onClick={handleDeleteUser}>
-          <FiTrash />
-        </button>
+       <FiTrash aria-label='Delete'  className="icon-button" title="Delete User" onClick={handleDeleteUser}></FiTrash>
+          
+        
       </li>
     </ul>
         </div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Blocks, Grid } from 'react-loader-spinner';
 
 const Spinner = (props) => {

@@ -1,0 +1,43 @@
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+body.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+.table-container.dark-mode {
+  background-color: #444;
+  color: #fff;
+}
+
+.table-container.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+.icon-button {
+  background: linear-gradient(135deg, #0cb7e2, #072c63);
+  color: white;
+  font-size: 1rem;
+  width: 2rem;
+  height: 2rem;
+  box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4);
+  transition: all 0.3s ease-in-out;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 0;
+}
+
+body.dark-mode .icon-button {
+  background: linear-gradient(135deg, #005f99, #0c57a1);
+  box-shadow: 0px 8px 16px rgba(0, 95, 153, 0.4);
+}
+
+body.light-mode .icon-button {
+  background: linear-gradient(135deg, #1e90ff, #1875ff);
+  box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4);
+}

@@ -18,7 +18,7 @@ export const getAssetData = async (customerId: string) => {
     headers: getAuthHeaders(),
   };
 
-  console.log('Fetching asset data with config:', config); // Log the request configuration
+  
 
   try {
     const response = await axios.request(config);
@@ -38,13 +38,13 @@ export const addAssetData = async (customerId: string, assetData: any) => {
     data: assetData,
   };
 
-  console.log('Adding asset data with config:', config); // Log the request configuration
+
 
   try {
     const response = await axios.request(config);
     return response.data;
   } catch (error) {
-    console.error('Error adding asset data:', error.response); // Log the error response
+    console.error('Error adding asset data:', error.response); 
     throw error;
   }
 };

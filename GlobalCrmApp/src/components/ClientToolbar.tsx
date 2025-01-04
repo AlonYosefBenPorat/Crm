@@ -9,12 +9,8 @@ import NetworkDevice from '../routes/customerStorge/NetworkDevice';
 import Backup from '../routes/customerStorge/Backup';
 import Asset from '../routes/customerStorge/Asset';
 import Gatway from '../routes/customerStorge/Gatway';
-import { FiSearch } from 'react-icons/fi';
+
 import { MdBackup } from 'react-icons/md';
-import { CgMinimizeAlt } from 'react-icons/cg';
-import { MdOutlinePlaylistRemove, MdOutlineEditNote, MdOutlineCloudUpload, MdOutlineDeleteSweep } from 'react-icons/md';
-import { RiMenuAddLine } from 'react-icons/ri';
-import { GiReturnArrow } from 'react-icons/gi';
 import CustomerChart from './CustomerChart';
 
 interface ClientToolBarProps {
@@ -35,9 +31,7 @@ const ClientToolBar: React.FC<ClientToolBarProps> = ({ customerId: initialCustom
   const [isNetworkDeviceOpen, setIsNetworkDeviceOpen] = useState(false);
   const [isBackupOpen, setIsBackupOpen] = useState(false);
   const [isAssetOpen, setIsAssetOpen] = useState(false);
-  const [isAddingItem, setIsAddingItem] = useState(false);
-  const [selectedRow, setSelectedRow] = useState<number | null>(null);
-  const [items, setItems] = useState<any[]>([]); // Adjust the type as needed
+  const [items, setItems] = useState<any[]>([]); 
 
   useEffect(() => {
     const selectedCustomerId = localStorage.getItem('selectedCardCustomerId');
@@ -123,32 +117,29 @@ const ClientToolBar: React.FC<ClientToolBarProps> = ({ customerId: initialCustom
     <div className="toolbar mt-15">
       <div className="toolbar-container">
         <ul className="toolbar-list">
-          <li><PiComputerTowerBold className="icon-button" title="Server" onClick={openServer} /></li>
-          <li><MdBackup className="icon-button" title="Backup" onClick={openBackup} /></li>
-          <li><BsRouter className="icon-button" title="Gateway" onClick={openGateway} /></li>
-          <li><PiShareNetworkThin className="icon-button" title="NetworkDevice" onClick={openNetworkDevice} /></li>
-          <li><FaUsersLine className="icon-button" title="Employee" onClick={openEmployee} /></li>
-          <li><FaFolderTree className="icon-button" title="Asset" onClick={openAsset} /></li>
+          <li><PiComputerTowerBold aria-label='Server' className="icon-button" title="Server" onClick={openServer} /></li>
+          <li><MdBackup aria-label='Backup' className="icon-button" title="Backup" onClick={openBackup} /></li>
+          <li><BsRouter aria-label='Gatway' className="icon-button" title="Gateway" onClick={openGateway} /></li>
+          <li><PiShareNetworkThin aria-label='Network' className="icon-button" title="NetworkDevice" onClick={openNetworkDevice} /></li>
+          <li><FaUsersLine aria-label='Employee' className="icon-button" title="Employee" onClick={openEmployee} /></li>
+          <li><FaFolderTree aria-label='Asset' className="icon-button" title="Asset" onClick={openAsset} /></li>
         </ul>
         <h1 className="header-title">
           <span className="header-gradient">{customerName}</span>
         </h1>
-        <div className="search-container">
-          <input type="text" placeholder="Search..." />
-          <FiSearch className="search-icon" />
-        </div>
+        
         <div>
           <img src={customerLogoSrc} alt={customerLogoAlt} className="customer-logo" />
         </div>
       </div>
 
       {!isAnyComponentOpen() && <CustomerChart />}
-      {isEmployeeOpen && <Employee customerId={customerId} customerName={customerName} />}
-      {isServerOpen && <Server customerId={customerId} customerName={customerName} />}
-      {isGatewayOpen && <Gatway onClose={openGateway} customerId={customerId} customerName={customerName} />}
-      {isNetworkDeviceOpen && <NetworkDevice onClose={openNetworkDevice} customerId={customerId} customerName={customerName} />}
-      {isBackupOpen && <Backup onClose={openBackup} customerId={customerId} customerName={customerName} />}
-      {isAssetOpen && <Asset onClose={openAsset} customerId={customerId} customerName={customerName} />}
+      {isEmployeeOpen && <Employee customerId={customerId} customerName={customerName} onMinimize={() => setIsEmployeeOpen(false)} />}
+      {isServerOpen && <Server customerId={customerId} customerName={customerName} onMinimize={() => setIsServerOpen(false)}/>}
+      {isGatewayOpen && <Gatway onClose={openGateway} customerId={customerId} customerName={customerName} onMinimize={() => setIsGatewayOpen(false)} />}
+      {isNetworkDeviceOpen && <NetworkDevice onClose={openNetworkDevice} customerId={customerId} customerName={customerName} onMinimize={() => setIsNetworkDeviceOpen(false)} />}
+      {isBackupOpen && <Backup onClose={openBackup} customerId={customerId} customerName={customerName} onMinimize={() => setIsBackupOpen(false)}/>}
+      {isAssetOpen && <Asset onClose={openAsset} customerId={customerId} customerName={customerName} onMinimize={() => setIsAssetOpen(false)} />}
     </div>
   );
 };

@@ -81,7 +81,7 @@ const MyCustomer: React.FC = () => {
           customerName={selectedCardCustomerName}
           customerLogoSrc={selectedCardCustomerLogoSrc}
           customerLogoAlt={selectedCardCustomerLogoAlt}
-          // refreshTable={refreshTable}
+          
         />
       )}
 

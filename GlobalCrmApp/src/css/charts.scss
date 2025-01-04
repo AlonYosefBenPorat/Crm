@@ -1,4 +1,3 @@
-/* charts.scss */
 :root {
   --color-blue: theme('colors.blue.light');
   --color-gray: theme('colors.gray.light');
@@ -10,30 +9,30 @@
 }
 
 .chart-card {
-  color: var(--color-blue); /* This will adapt based on mode */
-  background-color: #fff; /* White background for the chart card */
-  border-radius: 0.5rem; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  padding: 1rem; /* Padding inside the chart card */
-  margin: 1rem; /* Margin around the chart card */
+  color: var(--color-blue); 
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  padding: 1rem; 
+  margin: 1rem; 
 }
 
 .tooltip-content {
   color: var(--color-gray);
 }
 
-// Week navigation styling
+
 .week-navigation {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem; /* Adjust the gap as needed */
+  gap: 1rem; 
   margin-top: 1rem;
 }
 
-// Charts grid styling
+
 .charts-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two columns of equal width */
-  gap: 1rem; /* Gap between the grid items */
+  grid-template-columns: 1fr 1fr; 
+  gap: 1rem; 
 }

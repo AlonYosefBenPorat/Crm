@@ -18,7 +18,6 @@ const UsersToolbar: React.FC<UsersToolbarProps> = ({ refreshTable, selectedUserI
   const [isResetPasswordOpen, setIsResetPasswordOpen] = useState(false);
   const [isEditUserOpen, setIsEditUserOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-
   const toggleAddUser = () => {
     setIsAddUserOpen(!isAddUserOpen);
     setIsResetPasswordOpen(false);
@@ -33,7 +32,7 @@ const UsersToolbar: React.FC<UsersToolbarProps> = ({ refreshTable, selectedUserI
     setIsEditUserOpen(!isEditUserOpen);
     setIsResetPasswordOpen(false);
     setIsAddUserOpen(false);
-    console.log('Edit user with id:', selectedUserId);
+   
   };
 
   const toggleResetPassword = () => {
@@ -51,7 +50,7 @@ const UsersToolbar: React.FC<UsersToolbarProps> = ({ refreshTable, selectedUserI
       showErrorDialog('No user selected');
       return;
     }
-    console.log('Delete user with id:', selectedUserId);
+   
     try {
       const isConfirmed = await showDeleteConfirmation();
       if (!isConfirmed) {
@@ -73,7 +72,7 @@ const UsersToolbar: React.FC<UsersToolbarProps> = ({ refreshTable, selectedUserI
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
     setSearchQuery(query);
-    onSearch(query); // Call the onSearch prop with the query
+    onSearch(query); 
   };
 
   return (
@@ -81,23 +80,23 @@ const UsersToolbar: React.FC<UsersToolbarProps> = ({ refreshTable, selectedUserI
       <div className="toolbar-container">
         <ul className="toolbar-list">
           <li>
-            <button className="icon-button" title="Add User" onClick={toggleAddUser}>
-              <FiUserPlus />
+            <button className="icon-button" title="Add User" onClick={toggleAddUser} aria-label="Add User">
+              <FiUserPlus title="Add User"/>
             </button>
           </li>
           <li>
-            <button className="icon-button" title="Reset Password" onClick={toggleResetPassword}>
-              <FiKey />
+            <button className="icon-button" title="Reset Password" onClick={toggleResetPassword} aria-label="Reset Password">
+              <FiKey title="Reset Password"/>
             </button>
           </li>
           <li>
-            <button className="icon-button" title="Delete User" onClick={handleDeleteUser}>
-              <FiTrash2 />
+            <button className="icon-button" title="Delete User" onClick={handleDeleteUser} aria-label="Delete User">
+              <FiTrash2 title="Delete User"/>
             </button>
           </li>
           <li>
-            <button className="icon-button" title="Edit" onClick={handleEdit}>
-              <FiEdit />
+            <button className="icon-button" title="Edit" onClick={handleEdit} aria-label="Edit">
+              <FiEdit title="Edit"/>
             </button>
           </li>
         </ul>
@@ -108,7 +107,7 @@ const UsersToolbar: React.FC<UsersToolbarProps> = ({ refreshTable, selectedUserI
             value={searchQuery}
             onChange={handleSearchChange}
           />
-          <FiSearch className="search-icon" />
+          <FiSearch className="search-icon" title="Search" aria-label="Search"/>
         </div>
         {isAddUserOpen && <AddUser onClose={toggleAddUser} refreshTable={refreshTable} />}
         {isResetPasswordOpen && selectedUserId && (

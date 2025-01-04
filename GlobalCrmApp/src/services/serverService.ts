@@ -11,20 +11,14 @@ const getAuthHeaders = () => {
 };
 
 export const getServerData = async (customerId: string) => {
-  console.log('Customer ID:', customerId); // Log the customer ID
-
   const config = {
     method: 'get',
     maxBodyLength: Infinity,
     url: `${serverbaseurl}/${customerId}/server`,
     headers: getAuthHeaders(),
   };
-
-  console.log('Request Config:', config); 
-
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
     console.error('Error Response:', error.response); 
@@ -39,15 +33,11 @@ export const addServerData = async (customerId: string, serverData: any) => {
     url: `${serverbaseurl}/${customerId}/server`,
     headers: getAuthHeaders(),
     data: serverData, };
-
-  console.log('Request Config:', config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
-    console.error('Error Response:', error.response); // Log the error response
+    console.error('Error Response:', error.response);
     throw error;
   }
 };
@@ -59,15 +49,11 @@ export const deleteServerData = async (customerId: string, serverId: string) => 
     url: `${serverbaseurl}/${customerId}/server/${serverId}`,
     headers: getAuthHeaders(),
   };
-
-  console.log('Request Config:', config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
-    console.error('Error Response:', error.response); // Log the error response
+    console.error('Error Response:', error.response); 
     throw error;
   }
 };
@@ -81,14 +67,11 @@ export const updateServerData = async (customerId: string, serverId: string, ser
     data: serverData,
   };
 
-  console.log('Request Config:', config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
-    console.error('Error Response:', error.response); // Log the error response
+    console.error('Error Response:', error.response); 
     throw error;
   }
 };

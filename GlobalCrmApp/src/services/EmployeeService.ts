@@ -96,7 +96,6 @@ export const updateEmployee = async (customerId: string, employeeId: string, emp
 
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
     console.error('Error updating employee:', error.response || error.message);

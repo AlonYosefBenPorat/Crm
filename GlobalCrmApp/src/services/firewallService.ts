@@ -11,20 +11,14 @@ const getAuthHeaders = () => {
 };
 
 export const getFirewallData = async (customerId: string) => {
-  console.log('Customer ID:', customerId); // Log the customer ID
-
   const config = {
     method: 'get',
     maxBodyLength: Infinity,
     url: `${firewallBaseUrl}/${customerId}/Firewall`,
     headers: getAuthHeaders(),
   };
-
-  console.log('Request Config:', config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
     console.error('Error fetching firewall data:', error.response); // Log the error response
@@ -40,15 +34,12 @@ export const addFirewallData = async (customerId: string, firewallData: any) => 
     headers: getAuthHeaders(),
     data: firewallData,
   };
-
-  console.log('Request Config:', config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
     console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
-    console.error('Error adding firewall data:', error.response); // Log the error response
+    console.error('Error adding firewall data:', error.response); 
     throw error;
   }
 };
@@ -61,12 +52,8 @@ export const updateFirewallData = async (customerId: string, firewallId: string,
     headers: getAuthHeaders(),
     data: firewallData,
   };
-
-  console.log('Request Config:', config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
     console.error('Error updating firewall data:', error.response); // Log the error response
@@ -81,15 +68,11 @@ export const deleteFirewallData = async (customerId: string, firewallId: string)
     url: `${firewallBaseUrl}/${customerId}/Firewall/${firewallId}`,
     headers: getAuthHeaders(),
   };
-
-  console.log('Request Config:', config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
-    console.error('Error deleting firewall data:', error.response); // Log the error response
+    console.error('Error deleting firewall data:', error.response); 
     throw error;
   }
 };

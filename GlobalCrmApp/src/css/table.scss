@@ -43,7 +43,7 @@ body, html {
 }
 
 .table-actions-container {
-  top: 10%;
+  top: 0%;
   background-color: white;
   z-index: 1000;
   padding: 10px 0;
@@ -316,4 +316,48 @@ body, html {
     width: 100%;
     overflow-x: auto;
   }
+}
+
+body.darkmode {
+  background-color: #121212;
+  color: white;
+}
+
+body.darkmode .header-container {
+  background-color: #333;
+}
+
+body.darkmode .table-actions-container {
+  background-color: #333;
+}
+
+body.darkmode .users-table th,
+body.darkmode .users-table td {
+  background-color: #1f2937;
+  color: #d1d5db;
+}
+
+body.darkmode .users-table th {
+  color: #9ca3af;
+}
+
+body.darkmode .users-table tr:hover {
+  background-color: #374151;
+}
+
+body.darkmode .users-table td input {
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+}
+
+body.darkmode .search-input {
+  background-color: #333;
+  color: white;
+  border: 1px solid #555;
+}
+
+body.darkmode .tooltip {
+  background-color: #333;
+  color: white;
 }

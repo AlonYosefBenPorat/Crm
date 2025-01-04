@@ -14,6 +14,7 @@ import { FcNext, FcPrevious } from "react-icons/fc";
 interface EmployeeProps {
   onMinimize: () => void;
   customerId: string;
+  customerName: string;
   
 }
 
@@ -134,11 +135,11 @@ const Employee: React.FC<EmployeeProps> = ({ onMinimize, customerId }) => {
 
   const handleEditClick = (employeeId: string | null) => {
   if (editableEmployeeId === employeeId) {
-    // If the same employee is clicked again, close the edit mode
+   
     setEditableEmployeeId(null);
     setUpdatedEmployeeData({});
   } else {
-    // Open the edit mode for the selected employee
+   
     setEditableEmployeeId(employeeId);
     const employee = employees.find(emp => emp.employeeId === employeeId);
     setUpdatedEmployeeData(employee);
@@ -241,26 +242,26 @@ const Employee: React.FC<EmployeeProps> = ({ onMinimize, customerId }) => {
             <option value={20}>20</option>
           </select>
         </label>
-        <div>
-          <button
-            onClick={handlePrevPage}
-            disabled={currentPage === 1}
-            className="bg-blue-300 text-gray-700 font-semibold py-2 px-4 rounded-l hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
-            aria-label="Previous Page"
-            title="Previous Page"
-          >
-            <FcPrevious />
-          </button>
-          <button
-            onClick={handleNextPage}
-            disabled={indexOfLastRow >= employees.length}
-            className="bg-blue-300 text-gray-700 font-semibold py-2 px-4 rounded-r hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
-            aria-label="Next Page"
-            title="Next Page"
-          >
-            <FcNext />
-          </button>
-        </div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+  <button
+    onClick={handlePrevPage}
+    disabled={currentPage === 1}
+    className="icon-button"
+    aria-label="Previous Page"
+    title="Previous Page"
+  >
+    <FcPrevious />
+  </button>
+  <button
+    onClick={handleNextPage}
+    disabled={indexOfLastRow >= employees.length}
+    className="icon-button"
+    aria-label="Next Page"
+    title="Next Page"
+  >
+    <FcNext />
+  </button>
+</div>
       </div>
       <table className="users-table">
         <thead>

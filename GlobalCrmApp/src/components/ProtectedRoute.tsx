@@ -9,9 +9,6 @@ interface ProtectedRouteProps {
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ allowedRoles }) => {
   const { isLoggedIn, role } = useContext(AuthContext);
 
-  console.log('ProtectedRoute - isLoggedIn:', isLoggedIn);
-  console.log('ProtectedRoute - role:', role);
-  console.log('ProtectedRoute - allowedRoles:', allowedRoles);
 
   if (!isLoggedIn || !allowedRoles.includes(role)) {
     return <Navigate to="/no-permission" />;

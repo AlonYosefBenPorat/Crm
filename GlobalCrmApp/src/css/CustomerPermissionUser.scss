@@ -1,4 +1,3 @@
-// General container styling for dark/light mode
 .customer-permission-content {
   padding: 1rem;
   color: var(--text-primary);
@@ -8,35 +7,35 @@
 }
 
 .border-bottom-gray-bold {
-  border-bottom: 4px solid #d1d5db; /* border-gray-300 */
+  border-bottom: 4px solid #d1d5db;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
 .h2 {
-  font-size: 1.5rem; /* text-2xl */
-  font-weight: 600; /* font-semibold */
+  font-size: 1.5rem;
+  font-weight: 600;
   text-align: center;
 }
 
 .btn {
-  background-color: #3b82f6; /* bg-blue-500 */
+  background-color: #3b82f6;
   color: white;
   font-weight: bold;
   padding: 0.5rem 1rem;
-  border-radius: 9999px; /* rounded-full */
+  border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s;
-  margin-left: 0.5rem; /* ml-2 */
+  margin-left: 0.5rem;
   border: 1px solid var(--border-primary);
   cursor: pointer;
   margin-top: 1rem;
   text-align: center;
 
   &:hover {
-    background-color: #2563eb; /* bg-blue-600 */
+    background-color: #2563eb;
   }
 
   svg {
@@ -44,16 +43,8 @@
     width: 1rem;
     height: 1rem;
   }
-
-  // Dark mode styles
-  body.darkmode & {
-    background-color: #1f2937; /* bg-gray-800 */
-    color: #d1d5db; /* text-gray-300 */
-    border-color: gray;
-  }
 }
 
-// User dropdown styling
 .customer-permission-form {
   form {
     display: flex;
@@ -61,28 +52,21 @@
     margin-bottom: 1rem;
 
     label {
-      font-weight: 600; /* font-semibold */
-      margin-right: 0.75rem; /* mr-3 */
+      font-weight: 600;
+      margin-right: 0.75rem;
     }
 
     select {
-      border: 1px solid #d1d5db; /* border-gray-400 */
+      border: 1px solid #d1d5db;
       padding: 0.5rem;
       border-radius: 0.375rem;
       transition: background-color 0.3s;
       padding-left: 2.5rem;
       margin-top: 1rem;
-
-      body.darkmode & {
-        background-color: #1f2937; /* bg-gray-800 */
-        color: #e5e7eb; /* text-gray-200 */
-        border-color: gray;
-      }
     }
   }
 }
 
-// Table styling
 .users-table {
   width: 100%;
   border-collapse: collapse;
@@ -96,31 +80,22 @@
   }
 
   th, td {
-    padding: 0.5rem 0.25rem; /* py-2 px-4 */
-    border-bottom: 1px solid #d1d5db; /* border-gray-300 */
+    padding: 0.5rem 0.25rem;
+    border-bottom: 1px solid #d1d5db;
     text-align: center;
-
-    // Dark mode table cell styling
-    body.darkmode & {
-      border-color: #374151; /* border-gray-700 */
-    }
   }
 
   .notify-user-cell {
-    width: 100%; /* Ensure the cell width adjusts to the content */
-    padding: 0.5rem; /* Adjust padding as needed */
-    display: flex; /* Use Flexbox */
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
+    width: 100%;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   tbody tr:hover {
-    background-color: #f3f4f6; /* bg-gray-100 */
+    background-color: #f3f4f6;
     cursor: pointer;
-
-    body.darkmode & {
-      background-color: #374151; /* bg-gray-700 */
-    }
   }
 
   .btn {
@@ -130,12 +105,11 @@
   }
 }
 
-// Modern select styling
 .modern-select {
   width: 25%;
   padding: 0.5rem 1rem;
   border: 3px solid #ccc;
-  border-radius: 0.375rem; /* Rounded corners */
+  border-radius: 0.375rem;
   background-color: #fff;
   color: #333;
   font-weight: bold;
@@ -144,13 +118,13 @@
   margin: 2px;
 
   &:focus {
-    border-color: #0b6ec9; 
-    box-shadow: 0 0 0 3px rgba(4, 100, 160, 0.25); /* Focus shadow */
+    border-color: #0b6ec9;
+    box-shadow: 0 0 0 3px rgba(4, 100, 160, 0.25);
     outline: none;
   }
 
   &:hover {
-    border-color: #0910ca; /* Change to your desired hover color */
+    border-color: #0910ca;
   }
 
   option {
@@ -158,29 +132,8 @@
     color: #333;
     font-weight: bold;
   }
-
-  body.darkmode & {
-    background-color: #333;
-    color: #fff;
-    border-color: #555;
-
-    &:focus {
-      border-color: #1a73e8; /* Change to your desired focus color for dark mode */
-      box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.25); /* Focus shadow for dark mode */
-    }
-
-    &:hover {
-      border-color: #1a73e8; /* Change to your desired hover color for dark mode */
-    }
-
-    option {
-      background-color: #333;
-      color: #fff;
-    }
-  }
 }
 
-// Search container styling
 .search-container {
   margin-top: 1rem;
   display: flex;
@@ -196,41 +149,41 @@
   transition: border-color 0.3s, box-shadow 0.3s;
 
   &:focus {
-    border-color: #007bff; /* Change to your desired focus color */
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Focus shadow */
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
     outline: none;
   }
 
   &:hover {
-    border-color: #0056b3; /* Change to your desired hover color */
+    border-color: #0056b3;
   }
 }
 
-// Pagination styling
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
 
-   .btn {
-    background-color: #3b82f6; /* bg-blue-500 */
+  .btn {
+    background-color: #3b82f6;
     color: white;
     font-weight: bold;
-    padding: .5rem 2rem ;
-    border-radius: 9999px; /* rounded-full */
+    padding: 0.5rem 2rem;
+    border-radius: 9999px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
     margin-bottom: 1rem;
-    margin-left: 1.5rem; /* ml-2 */
+    margin-left: 1.5rem;
     border: 1px solid var(--border-primary);
     cursor: pointer;
     margin-top: 1rem;
     text-align: center;
+
     &:hover {
-      background-color: #2563eb; /* bg-blue-600 */
+      background-color: #2563eb;
     }
 
     svg {
@@ -238,64 +191,95 @@
       width: 1rem;
       height: 1rem;
     }
-
-    // Dark mode styles
-    body.darkmode & {
-      background-color: #1f2937; /* bg-gray-800 */
-      color: #d1d5db; /* text-gray-300 */
-      border-color: gray;
-    }
   }
 }
 
-// Icon button styling
 .icon-button {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: linear-gradient(135deg, #aaaad0, #0c6ce0); /* Gradient blue background */
-  color: white; /* Icon color */
-  font-size: 1.5rem; /* Icon size */
-  width: 2rem; /* Adjust size for the circle */
+  background: linear-gradient(135deg, #aaaad0, #0c6ce0);
+  color: white;
+  font-size: 1.5rem;
+  width: 2rem;
   height: 2rem;
-  box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4); /* Subtle shadow */
-  transition: all 0.3s ease-in-out; /* Smooth hover transition */
+  box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4);
+  transition: all 0.3s ease-in-out;
   border: none;
   cursor: pointer;
-  margin-right: 0.5rem; /* Add margin space between icons */
+  margin-right: 0.5rem;
 
   &:hover {
-    transform: scale(1.5); /* Slight zoom on hover */
-    box-shadow: 0px 12px 24px rgba(78, 101, 137, 0.6); /* Enhanced shadow */
+    transform: scale(1.5);
+    box-shadow: 0px 12px 24px rgba(78, 101, 137, 0.6);
   }
 
   &:active {
     transform: scale(0.9);
   }
+}
 
-  body.darkmode & {
-    background: linear-gradient(135deg, #005f99, #0c57a1); /* Darker gradient for dark mode */
-    box-shadow: 0px 8px 16px rgba(0, 95, 153, 0.4); /* Darker shadow */
+body.dark-mode .customer-permission-content {
+  background-color: #1f2937;
+  color: #d1d5db;
+}
+
+body.dark-mode .border-bottom-gray-bold {
+  border-bottom: 4px solid #4b5563;
+}
+
+body.dark-mode .btn {
+  background-color: #1f2937;
+  color: #d1d5db;
+  border-color: gray;
+
+  &:hover {
+    background-color: #374151;
   }
+}
 
-.search-input {
-  width: 100%;
-  max-width: 400px;
-  padding: 0.5rem;
-  border: 2px solid #ccc;
-  border-radius: 0.375rem;
-  transition: border-color 0.3s, box-shadow 0.3s;
+body.dark-mode .customer-permission-form select {
+  background-color: #1f2937;
+  color: #e5e7eb;
+  border-color: gray;
+}
+
+body.dark-mode .users-table th, body.dark-mode .users-table td {
+  border-color: #374151;
+}
+
+body.dark-mode .users-table tbody tr:hover {
+  background-color: #374151;
+}
+
+body.dark-mode .modern-select {
+  background-color: #333;
+  color: #fff;
+  border-color: #555;
 
   &:focus {
-    border-color: #007bff; /* Change to your desired focus color */
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Focus shadow */
-    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.25);
   }
 
   &:hover {
-    border-color: #0056b3; /* Change to your desired hover color */
+    border-color: #1a73e8;
+  }
+
+  option {
+    background-color: #333;
+    color: #fff;
   }
 }
-  
+
+body.dark-mode .search-input {
+  border-color: #4b5563;
+  background-color: #1f2937;
+  color: white;
+}
+
+body.dark-mode .icon-button {
+  background: linear-gradient(135deg, #005f99, #0c57a1);
+  box-shadow: 0px 8px 16px rgba(0, 95, 153, 0.4);
 }

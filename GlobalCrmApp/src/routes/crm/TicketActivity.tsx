@@ -52,13 +52,10 @@ const TicketActivity = () => {
   const [newActivityOpen, setNewActivityOpen] = useState(false); // State for NewActivity modal
 
   useEffect(() => {
-    console.log('TicketActivity mounted or updated');
-    console.log('Activities:', activities);
     refreshData();
   }, [selectedActivity]);
 
   const handleRowClick = (index: number, activity: any) => {
-    console.log('Row clicked:', activity);
     setSelectedRow(index);
     localStorage.setItem('selectedActivity', JSON.stringify(activity));
   };
@@ -93,7 +90,6 @@ const TicketActivity = () => {
   const handleDeleteActivity = async () => {
   const activity = JSON.parse(localStorage.getItem('selectedActivity'));
   if (activity) {
-    console.log('Deleting activity:', activity);
     try {
       await deleteUserActivity(activity.ticketId, activity.userActivityId);
       showDeleteConfirmation();
@@ -110,9 +106,9 @@ const TicketActivity = () => {
   return (
     <div className="relative" key={reloadKey}>
       <div className="button-container">
-        <AiOutlineFolderAdd aria-label='Add Activity' title='Add Activity' className="icon-button-square" onClick={handleOpenNewActivity} />
-        <RiDeleteBin5Line aria-label='Delete selected Activity' title='Delete selected Activity' className="icon-button-square" onClick={handleDeleteActivity} />
-        <LuRefreshCcw aria-label='Refresh Activity' title='Refresh Activity' className="icon-button-square" onClick={handleRefreshData} />
+        <AiOutlineFolderAdd aria-label='Add Activity' title='Add Activity' className="icon-button" onClick={handleOpenNewActivity} />
+        <RiDeleteBin5Line aria-label='Delete selected Activity' title='Delete selected Activity' className="icon-button" onClick={handleDeleteActivity} />
+        <LuRefreshCcw aria-label='Refresh Activity' title='Refresh Activity' className="icon-button" onClick={handleRefreshData} />
         <h4 className="total-time-box">Total time: {totalDuration}</h4>
       </div>
       <TableContainer>

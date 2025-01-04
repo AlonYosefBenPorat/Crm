@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import '../../css/sidewindow.scss'; 
 import { IoClose } from 'react-icons/io5';
 import { showErrorDialog, showSuccessDialog } from '../../dialogs/dialogs';
 import Spinner from '../../components/Spinner';

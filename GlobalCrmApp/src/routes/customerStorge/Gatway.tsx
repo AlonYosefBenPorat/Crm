@@ -15,7 +15,9 @@ import "react-datepicker/dist/react-datepicker.css";
 
 interface GatwayProps {
   onMinimize: () => void;
+  onClose: () => void;
   customerId: string;
+  customerName: string;
 }
 
 const Gatway: React.FC<GatwayProps> = ({ onMinimize, customerId }) => {
@@ -269,11 +271,11 @@ const Gatway: React.FC<GatwayProps> = ({ onMinimize, customerId }) => {
             <option value={20}>20</option>
           </select>
         </label>
-        <div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           <button
             onClick={handlePrevPage}
             disabled={currentPage === 1}
-            className="bg-blue-300 text-gray-700 font-semibold py-2 px-4 rounded-l hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="icon-button"
             aria-label="Previous Page"
             title="Previous Page"
           >
@@ -282,7 +284,7 @@ const Gatway: React.FC<GatwayProps> = ({ onMinimize, customerId }) => {
           <button
             onClick={handleNextPage}
             disabled={indexOfLastRow >= firewalls.length}
-            className="bg-blue-300 text-gray-700 font-semibold py-2 px-4 rounded-r hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
+           className="icon-button"
             aria-label="Next Page"
             title="Next Page"
           >

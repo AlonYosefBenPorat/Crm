@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getServerData, addServerData, deleteServerData, updateServerData } from "../../services/ServerService";
+import { getServerData, addServerData, deleteServerData, updateServerData } from '../../services/serverService';
 import { LoadingSpinner } from "../../components/Spinner";
 import { CgMinimizeAlt } from "react-icons/cg";
 import { RiMenuAddLine } from "react-icons/ri";
 import { GiReturnArrow } from "react-icons/gi";
 import { MdOutlineCloudUpload, MdOutlineDeleteSweep } from "react-icons/md";
-import { FaCheck, FaTimes } from "react-icons/fa";
 import { showErrorDialog, showSuccessDialog } from "../../dialogs/dialogs";
 import '../../css/table.scss';
 import { TbUserEdit } from "react-icons/tb";
@@ -16,6 +15,7 @@ import "react-datepicker/dist/react-datepicker.css";
 interface ServerProps {
   onMinimize: () => void;
   customerId: string;
+  customerName: string;
 }
 
 const Server: React.FC<ServerProps> = ({ onMinimize, customerId }) => {
@@ -272,11 +272,11 @@ const Server: React.FC<ServerProps> = ({ onMinimize, customerId }) => {
             <option value={20}>20</option>
           </select>
         </label>
-        <div>
+       <div style={{ display: 'flex', alignItems: 'center' }}>
           <button
             onClick={handlePrevPage}
             disabled={currentPage === 1}
-            className="bg-blue-300 text-gray-700 font-semibold py-2 px-4 rounded-l hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
+            className='icon-button'
             aria-label="Previous Page"
             title="Previous Page"
           >
@@ -285,7 +285,7 @@ const Server: React.FC<ServerProps> = ({ onMinimize, customerId }) => {
           <button
             onClick={handleNextPage}
             disabled={indexOfLastRow >= servers.length}
-            className="bg-blue-300 text-gray-700 font-semibold py-2 px-4 rounded-r hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
+            className='icon-button'
             aria-label="Next Page"
             title="Next Page"
           >

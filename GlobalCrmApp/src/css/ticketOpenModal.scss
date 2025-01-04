@@ -1,71 +1,119 @@
+.dialog-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4);
+  transition: all 0.3s ease-in-out;
+}
+
+body.dark-mode .dialog-container {
+  color: white;
+}
+
+.dialog-title {
+  background-color: white;
+}
+
+body.dark-mode .dialog-title {
+  background-color: #333;
+  color: #fff;
+}
+
 .ticket-info {
-  margin-bottom: 20px;
+  margin-bottom: 1px;
+  margin-top: 1px;
+}
 
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    font-weight: 600;
-  }
+body.dark-mode .ticket-info {
+  color: white;
+}
 
-  .ticket-details {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+.ticket-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
 
-    .ticket-detail {
-      border: 1px solid var(--border-color);
-      padding: 10px;
-      box-sizing: border-box;
-      width: calc(50% - 20px);
-      border-radius: 10px;
-      background-color: var(--background-color);
+.ticket-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 400;
+  color: #1875ff;
+}
 
-      strong {
-        font-weight: bold;
-        margin-right: 5px;
-      }
-    }
+.ticket-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1px;
+}
 
-    .full-width {
-      width: 100%;
-    }
-  }
+.ticket-detail {
+  border: 1px solid var(--border-color);
+  padding: 1px;
+  box-sizing: border-box;
+  width: calc(50% - 20px);
+  border-radius: 10px;
+  background-color: var(--background-color);
+}
+
+body.dark-mode .ticket-detail {
+  color: white;
+}
+
+.ticket-detail strong {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.full-width {
+  width: 100%;
 }
 
 .user-activity {
   margin-top: 30px;
+}
 
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    font-weight: 600;
-  }
+body.dark-mode .user-activity {
+  color: white;
+}
 
-  .activity-form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+.user-activity h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
 
-    .activity-field {
-      width: calc(50% - 20px);
-      margin-bottom: 10px;
+.activity-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
-      &.full-width {
-        width: 100%;
-      }
+.activity-field {
+  width: calc(50% - 20px);
+  margin-bottom: 10px;
+}
 
-      label {
-        font-size: 0.9rem;
-        margin-bottom: 5px;
-        display: block;
-        font-weight: 600;
-      }
+.activity-field.full-width {
+  width: 100%;
+}
 
-      textarea {
-        resize: vertical;
-      }
-    }
-  }
+.activity-field label {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  display: block;
+  font-weight: 600;
+}
+
+.activity-field textarea {
+  resize: vertical;
 }
 
 .clock-and-controls {
@@ -81,48 +129,21 @@
   gap: 10px;
   margin-left: 30px;
 }
+
 .button-status-container {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Distribute space between elements */
-  gap: 10px; /* Space between elements */
+  justify-content: flex-end;
+  margin-bottom: 1px;
+  padding-bottom: 1px;
+  width: 100%;
+  margin-left: 1%;
 }
 
 .status-container {
-  margin-left: 5%; /* Push the status container to the right */
+  margin-right: 1rem;
+  width: 100%;
 }
-
-.icon-Primary {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 10px; /* Horizontal spacing */
-  border-radius: 0.375rem; /* Rounded corners (6px) */
-  background: linear-gradient(135deg, #3b82f6, #02143c); /* Tailwind-inspired blue gradient */
-  color: #000; /* Black text color */
-  font-size: 1rem; /* Font size */
-  font-weight: 600; /* Semi-bold text */
-  
-  width: auto; /* Adjust width to fit content */
-  padding: 0.5rem 1rem; /* Padding for spacing */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: all 0.2s ease-in-out; /* Smooth hover/active transitions */
-  border: none; /* No border */
-  cursor: pointer;
-
-  &:hover {
-    background: linear-gradient(135deg, #128106, #06eb06); /* Slightly darker gradient on hover */
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Stronger shadow */
-    transform: translateY(-2px); /* Subtle lift effect */
-  }
-
-  &:active {
-    background: linear-gradient(135deg, #1e3a8a, #1d4ed8); /* Even darker gradient on active */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15); /* Reduced shadow */
-    transform: translateY(0); /* Reset lift effect */
-  }
-}
-
 
 .icon-button {
   display: flex;
@@ -130,35 +151,37 @@
   justify-content: center;
   margin-left: 3px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #aaaed0, #072c63); /* Gradient blue background */
-  color: white; /* Icon color */
-  font-size: 1rem; /* Icon size */
-  width: 2rem; /* Adjust size for the circle */
+  background: linear-gradient(135deg, #d0aaaa, #072c63);
+  color: white;
+  font-size: 1rem;
+  width: 2rem;
   height: 2rem;
-  box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4); /* Subtle shadow */
-  transition: all 0.3s ease-in-out; /* Smooth hover transition */
+  box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4);
+  transition: all 0.3s ease-in-out;
   border: none;
   cursor: pointer;
+  overflow: hidden;
+  padding: 0;
 }
 
 .icon-button:hover {
-  transform: scale(1.1); /* Slight zoom on hover */
-  box-shadow: 0px 12px 24px rgba(78, 101, 137, 0.6); /* Enhanced shadow */
+  transform: scale(1.1);
+  box-shadow: 0px 12px 24px rgba(78, 101, 137, 0.6);
 }
 
 body.dark-mode .icon-button {
-  background: linear-gradient(135deg, #005f99, #0c57a1); /* Darker gradient for dark mode */
-  box-shadow: 0px 8px 16px rgba(0, 95, 153, 0.4); /* Darker shadow */
+  background: linear-gradient(135deg, #005f99, #0c57a1);
+  box-shadow: 0px 8px 16px rgba(0, 95, 153, 0.4);
 }
 
 body.light-mode .icon-button {
-  background: linear-gradient(135deg, #1e90ff, #1875ff); /* Lighter gradient for light mode */
-  box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4); /* Lighter shadow */
+  background: linear-gradient(135deg, #1e90ff, #1875ff);
+  box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4);
 }
 
 .section-divider {
   border-bottom: 4px solid gray;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 .ticket-detail {
@@ -169,11 +192,11 @@ body.light-mode .icon-button {
   border-radius: 10px;
   background-color: var(--background-color);
   margin-bottom: 15px;
+}
 
-  strong {
-    font-weight: bold;
-    margin-right: 5px;
-  }
+.ticket-detail strong {
+  font-weight: bold;
+  margin-right: 5px;
 }
 
 .full-width {
@@ -182,27 +205,27 @@ body.light-mode .icon-button {
 
 .button-container {
   display: flex;
-  align-items: center;
+  align-items: right;
   justify-content: space-between;
 }
 
 .icon-button-square {
-  height: 40px; // Adjust this height to match your icon size
-  width: 40px; // Adjust this width to match your icon size
+  height: 40px;
+  width: 40px;
 }
 
 .total-time-box {
-  border: 2px solid #000; // Black border
-  padding: 10px; // Padding inside the box
-  border-radius: 5px; // Rounded corners
-  background-color: var(--background-color); // Light background color
-  font-size: 16px; // Font size
-  font-weight: bold; // Bold text
-  height: 40px; // Match the height of the icons
+  border: 2px solid #000;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--background-color);
+  font-size: 16px;
+  font-weight: bold;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: auto; // Align to the right
+  margin-left: auto;
 }
 
 .tags-container {
@@ -210,6 +233,7 @@ body.light-mode .icon-button {
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 8px;
+  
 }
 
 .tag {
@@ -232,4 +256,35 @@ body.light-mode .icon-button {
 
 .ticket-detail.full-width {
   width: 100%;
+}
+
+body.dark-mode {
+  .ticket-info,
+  .user-activity,
+  .clock-and-controls,
+  .timer-controls,
+  .button-status-container,
+  .status-container,
+  .icon-button,
+  .section-divider,
+  .ticket-detail,
+  .full-width,
+  .button-container,
+  .icon-button-square,
+  .total-time-box,
+  .tags-container,
+  .tag,
+  .tag-input,
+  .ticket-detail.full-width {
+    background-color: gray;
+    color: white;
+  }
+
+  input,
+  select,
+  textarea {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+  }
 }

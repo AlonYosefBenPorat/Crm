@@ -18,32 +18,25 @@ export const getAllTickets = async () => {
     url: `${baseticketUrl}`,
     headers: getAuthHeaders(),
   };
-
-  console.log('Fetching all tickets with config:', config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
     console.error('Error fetching all tickets:', error.response || error.message);
     throw error;
   }
 };
+
 //Get Ticket By Customer Id
 
 export const getTicketByCustomerId = async (customerId: string) => { 
   const config = {
     method: 'get',
-    url: `${baseticketUrl}/customer/${customerId}`,
+    url: `${baseticketUrl}/${customerId}`,
     headers: getAuthHeaders(),
   };
-
-  console.log(`Fetching ticket with ID ${customerId} with config:`, config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
     console.error(`Error fetching ticket with ID ${customerId}:`, error.response || error.message);
@@ -58,12 +51,8 @@ export const getTicketById = async (ticketId: string) => {
     url: `${baseticketUrl}/${ticketId}`,
     headers: getAuthHeaders(),
   };
-
-  console.log(`Fetching ticket with ID ${ticketId} with config:`, config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
     console.error(`Error fetching ticket with ID ${ticketId}:`, error.response || error.message);
@@ -80,12 +69,8 @@ export const addTicket = async (ticketData: any) => {
     headers: getAuthHeaders(),
     data: JSON.stringify(ticketData),
   };
-
-  console.log('Adding ticket with config:', config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
-    console.log('Response:', response.data); // Log the response
     return response.data;
   } catch (error) {
     console.error('Error adding ticket:', error.response || error.message);
@@ -101,9 +86,6 @@ export const updateTicket = async (ticketId: string, ticketData: any) => {
     headers: getAuthHeaders(),
     data: JSON.stringify(ticketData),
   };
-
-  console.log(`Updating ticket with ID ${ticketId} with config:`, config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
     return response.data;
@@ -121,9 +103,6 @@ export const addActivityToTicket = async (ticketId: string, activityData: any) =
     headers: getAuthHeaders(),
     data: JSON.stringify(activityData),
   };
-
-  console.log(`Adding activity to ticket with ID ${ticketId} with config:`, config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
     return response.data;
@@ -141,9 +120,6 @@ export const updateUserActivity = async (ticketId: number, activityId: number, a
     headers: getAuthHeaders(),
     data: JSON.stringify(activityData),
   };
-
-  console.log(`Updating user activity with ID ${activityId} for ticket with ID ${ticketId} with config:`, config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
     return response.data;
@@ -160,9 +136,6 @@ export const closeTicket = async (ticketId: string) => {
     url: `${baseticketUrl}/${ticketId}/close`,
     headers: getAuthHeaders(),
   };
-
-  console.log(`Closing ticket with ID ${ticketId} with config:`, config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
     return response.data;
@@ -179,9 +152,6 @@ export const deleteTicket = async (ticketId: string) => {
     url: `${baseticketUrl}/${ticketId}`,
     headers: getAuthHeaders(),
   };
-
-  console.log(`Deleting ticket with ID ${ticketId} with config:`, config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
     return response.data;
@@ -198,9 +168,6 @@ export const deleteUserActivity = async (ticketId: string, activityId: string) =
     url: `${baseticketUrl}/${ticketId}/deleteUserActivity/${activityId}`,
     headers: getAuthHeaders(),
   };
-
-  console.log(`Deleting user activity with ID ${activityId} for ticket with ID ${ticketId} with config:`, config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
     return response.data;
@@ -217,8 +184,6 @@ export const getActiveTickets = async () => {
     url: `${baseticketUrl}/active`,
     headers: getAuthHeaders(),
   };
-
-  console.log('Fetching active tickets with config:', config); // Log the request configuration
 
   try {
     const response = await axios.request(config);

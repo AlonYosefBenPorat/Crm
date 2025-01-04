@@ -9,7 +9,7 @@ import TicketToolbar from '../../components/TicketToolbar';
 import Spinner from '../../components/Spinner';
 import { useTicketContext } from '../../contexts/TicketContext';
 import { DarkModeContext } from '../../contexts/DarkModeContext';
-import '../../css/table.scss';
+import '../../css/ticketCrm.scss';
 
 const TicketCrm: React.FC = () => {
   const { tickets, selectedTicket, activities, setSelectedTicket, setActivities, refreshData } = useTicketContext();
@@ -24,6 +24,7 @@ const TicketCrm: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [currentPage, setCurrentPage] = useState(1);
   const [showAll, setShowAll] = useState(false);
+  const [filteredTickets, setFilteredTickets] = useState([]);
   const [updateKey, setUpdateKey] = useState(0);
   
   const rowsPerPage = 10;
@@ -98,7 +99,15 @@ const TicketCrm: React.FC = () => {
     setCurrentPage(1);
   };
 
-  const filteredTickets = tickets.filter(ticket => {
+  const handleTicketNumberChange = (ticket: any) => {
+    if (ticket) {
+      setFilteredTickets([ticket]);
+    } else {
+      setFilteredTickets([]);
+    }
+  };
+
+  const filteredTicketsList = filteredTickets.length > 0 ? filteredTickets : tickets.filter(ticket => {
     const matchesCustomer = selectedCustomer ? ticket.customerId === selectedCustomer : true;
     const matchesUser = selectedUser ? (
       (ticket.assignedToFirstName + ' ' + ticket.assignedToLastName).toLowerCase().includes(selectedUser.toLowerCase())
@@ -114,8 +123,8 @@ const TicketCrm: React.FC = () => {
     return matchesCustomer && matchesUser && matchesSearchTerm;
   });
 
-  const totalPages = Math.ceil(filteredTickets.length / rowsPerPage);
-  const displayedTickets = showAll ? filteredTickets : filteredTickets.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+  const totalPages = Math.ceil(filteredTicketsList.length / rowsPerPage);
+  const displayedTickets = showAll ? filteredTicketsList : filteredTicketsList.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
 
   const handlePreviousPage = () => {
     setCurrentPage(prevPage => Math.max(prevPage - 1, 1));
@@ -137,10 +146,11 @@ const TicketCrm: React.FC = () => {
         onCustomerChange={handleCustomerChange}
         onUserChange={handleUserChange}
         onSearchTermChange={handleSearchTermChange}
+        onTicketNumberChange={handleTicketNumberChange} // Pass the new prop
       />
 
       <TableContainer component={Paper} className={`table-container ${darkMode ? 'dark-mode' : ''}`}>
-        <Table>
+        <Table className="table">
           <TableHead>
             <TableRow>
               <TableCell>Ticket Number</TableCell>
@@ -193,9 +203,9 @@ const TicketCrm: React.FC = () => {
         />
         {!showAll && (
           <>
-            <RiArrowLeftSLine className='icon-button' onClick={handlePreviousPage} style={{ cursor: 'pointer', marginRight: '10px' }} />
+            <RiArrowLeftSLine aria-label='Previous Page' className='icon-button' onClick={handlePreviousPage} />
             <span>Page {currentPage} of {totalPages}</span>
-            <RiArrowRightSLine className='icon-button' onClick={handleNextPage} style={{ cursor: 'pointer', marginLeft: '10px' }} />
+            <RiArrowRightSLine aria-label='Next Page' className='icon-button' onClick={handleNextPage}  />
           </>
         )}
       </div>
@@ -212,6 +222,7 @@ const TicketCrm: React.FC = () => {
         setActivities={setActivities}
         refreshData={refreshData}
         updateKey={updateKey}
+        
       />
     </>
   );

@@ -122,7 +122,7 @@ const NavBar: React.FC<NavBarProps> = ({ openModal, openResetPasswordModal }) =>
           </div>
         </div>
         <button onClick={toggle} className="icon-button" aria-description="DarkMode">
-          {darkMode ? <CiDark /> : <MdOutlineLightMode />}
+          {darkMode ? <CiDark aria-label="Darkmode" title="DarkMode"/> : <MdOutlineLightMode aria-label="Lightmode" title="LightMode" />}
         </button>
       </div>
     </nav>

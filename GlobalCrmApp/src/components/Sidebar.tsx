@@ -39,10 +39,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, isLoggedIn }) => {
         className="menu-button"
         onClick={() => setSidebarOpen(!sidebarOpen)}
       >
-        <CiMenuBurger className='icon-button' />
+        <CiMenuBurger title='Expend/coolapse' aria-label='Collapse or Expand' className='icon-button' />
       </button>
       <div className={`sidebar-content ${sidebarOpen ? 'expanded' : 'collapsed'}`}>
-        <div className="p-6"></div>
+        <div className="p-3"></div>
         <div className="p-6"></div>
         <ul className="mt-4 border-t border-divider">
           {menuItems

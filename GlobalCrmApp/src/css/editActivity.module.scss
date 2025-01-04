@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(31, 41, 55, 0.75);
+  background-color: rgba(81, 82, 84, 0.75);
   z-index: 50;
 }
 
@@ -15,7 +15,7 @@
   padding: 1.5rem;
   width: 100%;
   max-width: 32rem;
-  max-height: 75vh; // Adjust the height of the drawer
+  max-height: 75vh;
   position: relative;
 }
 
@@ -100,4 +100,63 @@
   &:focus {
     box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.6);
   }
+}
+
+body.dark-mode .drawer {
+  background-color: rgba(81, 82, 84, 0.75);
+}
+
+body.dark-mode .drawerLarge {
+  background-color: #1a202c;
+  color: #cbd5e0;
+}
+
+body.dark-mode .drawerLabel {
+  color: #e2e8f0;
+}
+
+body.dark-mode .alertSuccess {
+  background-color: #065f46;
+  color: #d1fae5;
+}
+
+body.dark-mode .alertError {
+  background-color: #b91c1c;
+  color: #fee2e2;
+}
+
+body.dark-mode .closeButton {
+  color: #cbd5e0;
+  &:hover {
+    background-color: #2d3748;
+    color: #edf2f7;
+  }
+}
+
+body.dark-mode .textField {
+  background-color: #2d3748;
+  color: #cbd5e0;
+  border: 1px solid #4a5568;
+  &:focus {
+    border-color: #63b3ed;
+    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.6);
+  }
+}
+
+body.dark-mode .saveButton {
+  background-color: #2b6cb0;
+  &:hover {
+    background-color: #2c5282;
+  }
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.6);
+  }
+}
+
+body.dark-mode .closeIcon {
+  color: #cbd5e0;
+}
+
+body.dark-mode .formGroup {
+  color: #cbd5e0;
 }

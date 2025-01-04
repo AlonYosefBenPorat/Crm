@@ -1,5 +1,3 @@
-/* form.scss */
-
 .form-group {
   display: flex;
   flex-direction: column;
@@ -8,41 +6,40 @@
   label {
     font-weight: 500;
     margin-bottom: 0.5rem;
-    color: #374151; // Tailwind's text-gray-900
+    color: #374151;
   }
 
   .form-control {
-    padding: 0.625rem; // Tailwind's p-2.5
-    border: 1px solid #d1d5db; // Tailwind's border-gray-300
-    border-radius: 0.5rem; // Tailwind's rounded-lg
-    font-size: 0.875rem; // Tailwind's text-sm
+    padding: 0.625rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
     color: #374151;
 
     &:focus {
       outline: none;
-      border-color: #3b82f6; // Tailwind's focus:border-blue-500
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); // Tailwind's focus:ring-blue-500
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
     }
   }
 
   .error-message {
-    color: #f87171; // Tailwind's text-red-500
+    color: #f87171;
     font-size: 0.875rem;
     margin-top: 0.5rem;
   }
 }
 
-/* Style the select dropdown */
 .select-wrapper {
   position: relative;
-  width: 16rem; // Tailwind's w-64
+  width: 16rem;
   display: inline-block;
 
   select {
     appearance: none;
     width: 100%;
-    padding: 0.625rem; // Tailwind's p-2.5
-    border: 1px solid #d1d5db; // Tailwind's border-gray-400
+    padding: 0.625rem;
+    border: 1px solid #d1d5db;
     border-radius: 0.5rem;
     background-color: #ffffff;
     font-size: 0.875rem;
@@ -59,7 +56,7 @@
     right: 0.5rem;
     display: flex;
     align-items: center;
-    color: #4b5563; // Tailwind's text-gray-700
+    color: #4b5563;
     pointer-events: none;
 
     svg {
@@ -69,7 +66,6 @@
   }
 }
 
-/* Submit Button */
 .submit-btn {
   padding: 0.625rem 1.25rem;
   font-size: 0.875rem;
@@ -78,11 +74,56 @@
   background: linear-gradient(to right, #4ade80, #22c55e, #16a34a);
   border-radius: 0.5rem;
   transition: background 0.2s ease;
+
   &:hover {
-    background: linear-gradient(to right, #22c55e, #16a34a, #15803d); // Darker on hover
+    background: linear-gradient(to right, #22c55e, #16a34a, #15803d);
   }
+
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.5); // Focus ring effect
+    box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.5);
+  }
+}
+
+body.dark-mode {
+  .form-group label {
+    color: #d1d5db;
+  }
+
+  .form-group .form-control {
+    background-color: #374151;
+    color: #d1d5db;
+    border: 1px solid #4b5563;
+  }
+
+  .form-group .form-control:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.3);
+  }
+
+  .form-group .error-message {
+    color: #fca5a5;
+  }
+
+  .select-wrapper select {
+    background-color: #374151;
+    color: #d1d5db;
+    border: 1px solid #4b5563;
+  }
+
+  .select-wrapper .select-icon {
+    color: #9ca3af;
+  }
+
+  .submit-btn {
+    background: linear-gradient(to right, #16a34a, #15803d, #166534);
+  }
+
+  .submit-btn:hover {
+    background: linear-gradient(to right, #15803d, #166534, #14532d);
+  }
+
+  .submit-btn:focus {
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.5);
   }
 }

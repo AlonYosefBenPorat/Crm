@@ -16,7 +16,6 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Retrieve user name from local storage or login context
     const storedFirstName = localStorage.getItem('UserFirstName');
     const storedLastName = localStorage.getItem('UserLastName');
     const userId = localStorage.getItem('userid');
@@ -25,7 +24,7 @@ const Home: React.FC = () => {
       setStoredLastName(storedLastName);
     }
 
-    // Fetch open tickets
+
     const fetchOpenTickets = async () => {
       const tickets = await getActiveTickets();
       setOpenTickets(tickets.length);
@@ -33,7 +32,7 @@ const Home: React.FC = () => {
 
     fetchOpenTickets();
 
-    // Fetch user permissions
+
     const fetchPermissions = async () => {
       if (userId) {
         const userPermissions = await getUserPermissions(userId);
@@ -43,7 +42,7 @@ const Home: React.FC = () => {
 
     fetchPermissions();
 
-    // Update current time and greeting every second
+    
     const timer = setInterval(() => {
       const now = new Date();
       setCurrentTime(now.toLocaleTimeString());

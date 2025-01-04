@@ -1,3 +1,42 @@
+.table-container {
+  margin: 40px 0;
+  border: 2px solid #397cac;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+body.dark-mode .table-container {
+  background-color: #1f2937;
+  color: #d1d5db;
+}
+
+body.light-mode .table-container {
+  background-color: #fff;
+  color: #000;
+}
+
+.table-container th {
+  font-weight: bold;
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+body.dark-mode .table-container th {
+  background-color: #374151;
+  color: #d1d5db;
+}
+
+@media (max-width: 767px) {
+  .table-container {
+    margin: 20px 0;
+    border: 2px solid #dd2a2a;
+  }
+
+  .table-container th, .table-container td {
+    padding: 0.5rem;
+  }
+}
+
 .side-panel {
   position: fixed;
   right: 0;
@@ -11,11 +50,11 @@
   flex-direction: column;
 
   .profile-image {
-    width: 15%; // Set the width of the image
-    height: 25%; // Set the height of the image
-    border-radius: 50%; // Make the image circular
+    width: 15%;
+    height: 25%;
+    border-radius: 50%;
     margin-left: 14rem;
-    object-fit: cover; // Ensures the image fills the circle without distortion
+    object-fit: cover;
   }
 
   .side-panel-header {
@@ -90,38 +129,10 @@
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 10px; /* Adjust the gap between the icons as needed */
+  gap: 10px;
 }
 
-.icon-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #aaaad0, #0c6ce0); /* Gradient blue background */
-  color: white; /* Icon color */
-  font-size: 1.5rem; /* Icon size */
-  width: 2rem; /* Adjust size for the circle */
-  height: 2rem;
-  box-shadow: 0px 8px 16px rgba(24, 117, 255, 0.4); /* Subtle shadow */
-  transition: all 0.3s ease-in-out; /* Smooth hover transition */
-  border: none;
-  cursor: pointer;
 
-  &:hover {
-    transform: scale(1.5); /* Slight zoom on hover */
-    box-shadow: 0px 12px 24px rgba(78, 101, 137, 0.6); /* Enhanced shadow */
-  }
-
-  &:active {
-    transform: scale(0.9);
-  }
-}
-
-body.dark-mode .icon-button {
-  background: linear-gradient(135deg, #005f99, #0c57a1); /* Darker gradient for dark mode */
-  box-shadow: 0px 8px 16px rgba(0, 95, 153, 0.4); /* Darker shadow */
-}
 .password-field {
   position: relative;
   display: flex;
@@ -129,15 +140,15 @@ body.dark-mode .icon-button {
 
   .password-input {
     width: 100%;
-    padding-right: 2.5rem; /* Add padding to the right to make space for the eye icon */
+    padding-right: 2.5rem;
   }
 
   .eye-icon {
     position: absolute;
     right: 10px;
     cursor: pointer;
-    color: #aeb0b4; /* Change this color to your desired color */
-    font-size: 1.4em; /* Adjust the size as needed */
+    color: #aeb0b4;
+    font-size: 1.4em;
   }
 }
 
@@ -154,34 +165,77 @@ body.dark-mode .icon-button {
   }
 }
 
-.darkmode {
-  .side-panel {
-    background-color: #1f2937;
+body.dark-mode .side-panel {
+  background-color: #1f2937;
+}
 
-    .side-panel-header {
-      background-color: #374151;
-      border-bottom: 1px solid #4b5563;
+body.dark-mode .side-panel-header {
+  background-color: #374151;
+  border-bottom: 1px solid #4b5563;
 
-      h2 {
-        color: #d1d5db;
-      }
+  h2 {
+    color: #d1d5db;
+  }
+}
+
+body.dark-mode .side-panel-content {
+  label {
+    color: #d1d5db;
+  }
+
+  input,
+  select {
+    border: 1px solid #4b5563;
+    background-color: #374151;
+    color: #d1d5db;
+  }
+
+  .error-message {
+    color: #f87171;
+  }
+
+  button {
+    background-color: #2563eb;
+    color: #fff;
+
+    &:hover {
+      background-color: #1d4ed8;
     }
+  }
+}
 
-    .side-panel-content {
-      label {
-        color: #d1d5db;
-      }
+body.dark-mode .toolbar-list {
+  color: #d1d5db;
+}
 
-      input,
-      select {
-        border: 1px solid #4b5563;
-        background-color: #374151;
-        color: #d1d5db;
-      }
+body.dark-mode .table-container td {
+  background-color: #1f2937;
+  color: #d1d5db;
+}
 
-      .error-message {
-        color: #f87171;
-      }
-    }
+body.dark-mode .table-container th {
+  background-color: #374151;
+  color: #d1d5db;
+}
+
+body.dark-mode .profile-image {
+  filter: brightness(0.8);
+}
+
+body.dark-mode .password-field .password-input {
+  background-color: #374151;
+  color: #d1d5db;
+  border: 1px solid #4b5563;
+}
+
+body.dark-mode .password-field .eye-icon {
+  color: #9ca3af;
+}
+
+body.dark-mode .generate-password-button {
+  background-color: #0a8e2a;
+
+  &:hover {
+    background-color: #086e1a;
   }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Container } from '@mui/material';
 import { IoCloseSharp } from 'react-icons/io5';
 import SubActivityTabs from './SubActivityTabs';
@@ -9,7 +9,10 @@ import Alert from '../../dialogs/alert';
 import '../../css/ticketOpenModal.scss';
 import NewActivity from './NewActivity';
 import { showSuccessDialog } from '../../dialogs/dialogs';
-import CustomerHistory from './CustomerHistory';
+import { CiAirportSign1, CiSaveUp2 } from 'react-icons/ci';
+import { MdLibraryAddCheck } from 'react-icons/md';
+
+
 
 interface TicketOpenModalProps {
   open: boolean;
@@ -19,6 +22,7 @@ interface TicketOpenModalProps {
   setActivities: (activities: any[]) => void;
   refreshData: (ticketId: string) => Promise<void>;
   updateKey: number;
+   
 }
 
 const TicketOpenModal: React.FC<TicketOpenModalProps> = ({ open, onClose, ticket, activities, setActivities, refreshData, updateKey }) => {
@@ -34,6 +38,7 @@ const TicketOpenModal: React.FC<TicketOpenModalProps> = ({ open, onClose, ticket
   const [newTag, setNewTag] = useState('');
   const [alert, setAlert] = useState<{ message: string; type: 'success' | 'warning' } | null>(null);
 
+  
   useEffect(() => {
     if (ticket) {
       setActivities(ticket.userActivities);
@@ -70,7 +75,7 @@ const TicketOpenModal: React.FC<TicketOpenModalProps> = ({ open, onClose, ticket
       setSelectedEmployeeId(employee.employeeId);
       setContactEmail(employee.email);
       setContactPhone(employee.phone);
-      console.log(`Selected Employee ID: ${employee.employeeId}`); // Log the selected employee ID
+      console.log(`Selected Employee ID: ${employee.employeeId}`); 
     }
   };
 
@@ -87,14 +92,14 @@ const TicketOpenModal: React.FC<TicketOpenModalProps> = ({ open, onClose, ticket
     if (tagElement) {
       tagElement.setAttribute('contentEditable', 'false');
       const updatedTags = [...tags];
-      updatedTags[index] = tagElement.innerText.replace(/^#/, ''); // Remove any existing # to avoid duplicates
+      updatedTags[index] = tagElement.innerText.replace(/^#/, ''); 
       setTags(updatedTags);
     }
   };
 
   const handleAddTag = (event) => {
     if (event.key === 'Enter' && newTag.trim() !== '') {
-      const formattedTag = newTag.trim().replace(/^#/, ''); // Remove any existing # to avoid duplicates
+      const formattedTag = newTag.trim().replace(/^#/, ''); 
       if (!tags.includes(formattedTag)) {
         setTags([...tags, formattedTag]);
         setNewTag('');
@@ -164,21 +169,16 @@ const TicketOpenModal: React.FC<TicketOpenModalProps> = ({ open, onClose, ticket
   if (!ticket) return null;
 
   return (
-<Dialog open={open} onClose={onClose} maxWidth="lg" fullWidth>
-  <DialogTitle>
+
+<Dialog className='dialog-container' open={open} onClose={onClose} maxWidth="lg" fullWidth>
+  <DialogTitle className='dialog-title'>
     <IoCloseSharp onClick={onClose} className='text-left' aria-label='close Window' />
-    <div className='text-center'>
+    <div className='text-center '>
       Customer Name: {ticket.customerName} | Ticket Number: {ticket.ticketId}
     </div>
     <div className="ticket-detail">
-      <div className="button-status-container">
-        <Button onClick={handleCloseTicket} className='icon-Primary' aria-label='close-ticket'>
-          Close Ticket
-        </Button>  
-        <Button onClick={handleSave} className='icon-Primary' aria-label='save'>
-          Save
-        </Button>
-        <div className="status-container">
+          <div className="button-status-container">
+            <div className="status-container">
           <div>
             <strong>Status:</strong>
             <select value={status} onChange={handleStatusChange}>
@@ -189,8 +189,18 @@ const TicketOpenModal: React.FC<TicketOpenModalProps> = ({ open, onClose, ticket
             </select>
           </div>
         </div>
-      </div>
-    </div>
+          </div>
+          </div>
+    <div className='button-container'>
+        <MdLibraryAddCheck  title='Closed The Ticket' onClick={handleCloseTicket} className='icon-button'  aria-label='close-ticket'>
+          Close 
+        </MdLibraryAddCheck >  
+        <CiSaveUp2 title='Save Ticket' onClick={handleSave} className='icon-button' aria-label='Save Ticket'>
+          Save
+              </CiSaveUp2>
+            
+          
+        </div>
     <div className="section-divider"></div>
   </DialogTitle>
   <DialogContent>
@@ -262,17 +272,17 @@ const TicketOpenModal: React.FC<TicketOpenModalProps> = ({ open, onClose, ticket
       </div>
 
       {/* Border between sections */}
-      <div className="section-divider"></div>
-
+          <div className="section-divider"></div>
+          <div style={{ display: 'flex', justifyContent: 'end', alignItems: 'center', marginTop: '1px' }}>
+            <CiSaveUp2 onClick={handleSave} className='icon-button' aria-label='Save' title='Save'></CiSaveUp2>
+          </div>
       {/* User Activity */}
       <div className="user-activity">
         <div className="activity-content">
           <SubActivityTabs ticket={ticket} activities={activities} refreshData={refreshData} refreshActivity={refreshSelectedActivity} />
         </div>
       </div>
-      <Button onClick={handleSave} className='icon-button' aria-label='save'>
-        Save
-      </Button>
+     
     </Container>
   </DialogContent>
   <DialogActions>
@@ -291,6 +301,7 @@ const TicketOpenModal: React.FC<TicketOpenModalProps> = ({ open, onClose, ticket
     </>
   )}
 </Dialog>
+   
   );
 };
 

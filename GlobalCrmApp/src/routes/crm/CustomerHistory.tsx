@@ -22,8 +22,7 @@ const CustomerHistory = ({ customerId }) => {
     const fetchTickets = async () => {
       try {
         const response = await getTicketByCustomerId(customerId);
-        console.log("Customer ID: ", customerId);
-        console.log('Fetched tickets:', response);
+    
 
         const sortedTickets = response.sort((a: Ticket, b: Ticket) => new Date(b.date).getTime() - new Date(a.date).getTime());
         const filteredTickets = sortedTickets.slice(0, 5);
@@ -39,7 +38,7 @@ const CustomerHistory = ({ customerId }) => {
   }, [customerId]);
 
   return (
-    <Table>
+    <Table className="customer-history-table">
       <TableHead>
         <TableRow>
           <TableCell>Id</TableCell>
@@ -47,7 +46,6 @@ const CustomerHistory = ({ customerId }) => {
           <TableCell>Subject</TableCell>
           <TableCell>Description</TableCell>
           <TableCell>Date</TableCell>
-          
         </TableRow>
       </TableHead>
       <TableBody>
@@ -57,8 +55,7 @@ const CustomerHistory = ({ customerId }) => {
             <TableCell>{ticket.title}</TableCell>
             <TableCell>{ticket.subject}</TableCell>
             <TableCell>{ticket.description}</TableCell>
-             <TableCell>{formatDate (ticket.createdAt)}</TableCell>
-            
+            <TableCell>{formatDate(ticket.createdAt)}</TableCell>
           </TableRow>
         ))}
       </TableBody>

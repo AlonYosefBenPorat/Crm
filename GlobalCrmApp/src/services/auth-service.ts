@@ -38,7 +38,7 @@ const logout = () => {
   
   localStorage.clear();
 
-  // Dispatch the userLogout event
+
   eventBus.dispatch('userLogout');
 };
 
@@ -53,12 +53,7 @@ const getUserById = async (userId: string) => {
     }
     const tokenObject = JSON.parse(tokenString);
     const token = tokenObject.token;
-    console.log("Tokenauth:", token);
     const url = `${GetUserByIdUrl}/${userId}`;
-    console.log("URL:", url);
-    console.log("Token:", token);
-    console.log("UserId:", userId);
-
     const response = await axios.get(url, {
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -66,7 +61,6 @@ const getUserById = async (userId: string) => {
       }
     });
 
-    console.log("User details fetched:", response.data);
     return response.data;
   } catch (error) {
     console.error("Get user by ID error:", error);
@@ -91,9 +85,7 @@ const getTokenResetPassword = async (email: string, oldPassword: string) => {
     const response = await axios.request(config);
     const token = response.data.token;
     localStorage.setItem('resetToken', token);
-    console.log('Token saved to local storage');
   } catch (error) {
-    console.log(error.response ? error.response.data : error.message);
     throw error;
   }
 };
@@ -122,9 +114,7 @@ const resetPassword = async (email: string, newPassword: string) => {
 
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
   } catch (error) {
-    console.log(error.response ? error.response.data : error.message);
     throw error;
   }
 };

@@ -26,7 +26,6 @@ export const sendEmail = async (emailData: EmailData) => {
 
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
   } catch (error) {
     console.error('Error sending email:', error);
   }

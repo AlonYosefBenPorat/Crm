@@ -15,7 +15,9 @@ import "react-datepicker/dist/react-datepicker.css";
 
 interface BackupProps {
   onMinimize: () => void;
+  onClose: () => void;
   customerId: string;
+  customerName: string;
 }
 
 const Backup: React.FC<BackupProps> = ({ onMinimize, customerId }) => {
@@ -108,7 +110,6 @@ const Backup: React.FC<BackupProps> = ({ onMinimize, customerId }) => {
 
   const handleSaveBackup = async () => {
     try {
-      console.log('Adding backup data:', newBackup); // Log the data being sent
       if (editableBackupId) {
         await updateBackupData(customerId, editableBackupId, updatedBackupData);
         showSuccessDialog('Backup updated successfully');
@@ -230,7 +231,7 @@ const Backup: React.FC<BackupProps> = ({ onMinimize, customerId }) => {
             <CgMinimizeAlt 
               onClick={onMinimize} 
               title="Minimize" 
-              className="icon" 
+              className="icon-button" 
               aria-label="Minimize"
             />
           </li>
@@ -292,11 +293,11 @@ const Backup: React.FC<BackupProps> = ({ onMinimize, customerId }) => {
             <option value={20}>20</option>
           </select>
         </label>
-        <div>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
           <button
             onClick={handlePrevPage}
             disabled={currentPage === 1}
-            className="bg-blue-300 text-gray-700 font-semibold py-2 px-4 rounded-l hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
+            className='icon-button'
             aria-label="Previous Page"
             title="Previous Page"
           >
@@ -305,10 +306,9 @@ const Backup: React.FC<BackupProps> = ({ onMinimize, customerId }) => {
           <button
             onClick={handleNextPage}
             disabled={indexOfLastRow >= backups.length}
-            className="bg-blue-300 text-gray-700 font-semibold py-2 px-4 rounded-r hover:bg-gray-400 disabled:opacity-50 disabled:cursor-not-allowed"
+            className='icon-button'
             aria-label="Next Page"
-            title="Next Page"
-          >
+            title="Next Page">
             <FcNext />
           </button>
         </div>

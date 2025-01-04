@@ -90,10 +90,9 @@ const ChartServer: React.FC = () => {
     const chart = new ApexCharts(document.getElementById("donut-chart"), getChartOptions());
     chart.render();
 
-    // Get all the checkboxes by their class name
+    
     const checkboxes = document.querySelectorAll('#devices input[type="checkbox"]');
 
-    // Function to handle the checkbox change event
     function handleCheckboxChange(event: Event) {
       const checkbox = event.target as HTMLInputElement;
       if (checkbox.checked) {
@@ -115,13 +114,11 @@ const ChartServer: React.FC = () => {
       }
     }
 
-    // Attach the event listener to each checkbox
     checkboxes.forEach((checkbox) => {
       checkbox.addEventListener('change', handleCheckboxChange);
     });
 
     return () => {
-      // Cleanup event listeners on unmount
       checkboxes.forEach((checkbox) => {
         checkbox.removeEventListener('change', handleCheckboxChange);
       });

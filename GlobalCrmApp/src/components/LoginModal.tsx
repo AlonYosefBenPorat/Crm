@@ -57,7 +57,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ isModalOpen, closeModal }) => {
       showSuccessDialog('Login Successful');
       navigate('/Home'); 
     } catch (error) {
-      console.log(error);
       setError('Login failed. Please check your credentials and try again.');
       showErrorDialog('Login Failed');
     }

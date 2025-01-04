@@ -11,23 +11,17 @@ const getAuthHeaders = () => {
 };
 
 export const getBackupData = async (customerId: string) => {
-  console.log('Customer ID:', customerId); 
-
   const config = {
     method: 'get',
     maxBodyLength: Infinity,
     url: `${backupBaseUrl}/${customerId}/backup`,
     headers: getAuthHeaders(),
   };
-
-  console.log('Request Config:', config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
-    console.error('Error fetching backup data:', error.response); // Log the error response
+    console.error('Error fetching backup data:', error.response); 
     throw error;
   }
 };
@@ -41,14 +35,11 @@ export const addBackupData = async (customerId: string, backupData: any) => {
     data: backupData,
   };
 
-  console.log('Request Config:', config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
-    console.error('Error adding backup data:', error.response); // Log the error response
+    console.error('Error adding backup data:', error.response);
     throw error;
   }
 };
@@ -62,14 +53,12 @@ export const updateBackupData = async (customerId: string, backupId: string, bac
     data: backupData,
   };
 
-  console.log('Request Config:', config); // Log the request configuration
 
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
-    console.error('Error updating backup data:', error.response); // Log the error response
+    console.error('Error updating backup data:', error.response); 
     throw error;
   }
 };
@@ -81,15 +70,11 @@ export const deleteBackupData = async (customerId: string, backupId: string) => 
     url: `${backupBaseUrl}/${customerId}/backup/${backupId}`,
     headers: getAuthHeaders(),
   };
-
-  console.log('Request Config:', config); // Log the request configuration
-
   try {
     const response = await axios.request(config);
-    console.log(JSON.stringify(response.data));
     return response.data;
   } catch (error) {
-    console.error('Error deleting backup data:', error.response); // Log the error response
+    console.error('Error deleting backup data:', error.response); 
     throw error;
   }
 };

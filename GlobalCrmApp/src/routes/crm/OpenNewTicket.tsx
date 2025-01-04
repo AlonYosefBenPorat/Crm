@@ -182,10 +182,10 @@ const OpenNewTicket: React.FC<OpenNewTicketProps> = ({ open, onClose, onSave }) 
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="secondary">
+        <Button onClick={onClose} className='icon-button'>
           Cancel
         </Button>
-        <Button onClick={handleSave} color="primary">
+        <Button onClick={handleSave} className='icon-button'>
           Save
         </Button>
       </DialogActions>

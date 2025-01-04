@@ -7,7 +7,7 @@ import { customerService } from '../services/customerSerivce';
 import { showErrorDialog, showSuccessDialog, showDeleteConfirmation } from '../dialogs/dialogs';
 import AddCustomer from '../routes/appmanagment/AddCustomer';
 import EditCustomer from '../routes/appmanagment/EditCustomer';
-import { FaBuildingShield } from 'react-icons/fa6';
+
 
 interface CustomerToolbarProps {
   refreshTable: () => Promise<void>;
@@ -65,7 +65,7 @@ const CustomerToolbar: React.FC<CustomerToolbarProps> = ({ refreshTable, selecte
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value;
     setSearchQuery(query);
-    onSearch(query); // Call the onSearch prop with the query
+    onSearch(query); 
   };
 
   return (

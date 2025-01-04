@@ -20,8 +20,8 @@
   align-items: center;
   padding-start: 2.75rem;
   pointer-events: none;
-  width: 2.5rem;  /* Adjust the width as needed */
-  height: 2.5rem; /* Adjust the height as needed */
+  width: 2.5rem; 
+  height: 2.5rem; 
 }
 
 .my-customer-input {
@@ -29,23 +29,13 @@
   width: 150%;
   padding: 1rem 1.75rem 1rem 0.5rem;
   font-size: 1.25rem;
-  color: #e0e2e3;
+  color: #4a5568;
   border: 1px solid #d1d5db;
   border-radius: 1.5rem;
   background-color: #f9fafb;
   &:focus {
     ring: 1px solid #3b82f6;
     border-color: #3b82f6;
-  }
-  &.dark {
-    background-color: #374151;
-    border-color: #4b5563;
-    placeholder-color: #9ca3af;
-    color: #f9fafb;
-    &:focus {
-      ring: 1px solid #3b82f6;
-      border-color: #3b82f6;
-    }
   }
 }
 
@@ -66,15 +56,11 @@
 }
 
 .my-customer-card {
-  max-width: 40rem; /* Adjusted size */
+  max-width: 40rem; 
   background-color: #ffffff;
   border: 1px solid #000000;
   border-radius: 0.5rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  &.dark {
-    background-color: #1f2937;
-    border-color: #fdfeff;
-  }
 }
 
 .my-customer-image {
@@ -86,7 +72,7 @@
 }
 
 .my-customer-content {
-  padding: 2rem; /* Adjusted padding */
+  padding: 2rem;
 }
 
 .my-customer-title {
@@ -94,8 +80,24 @@
   font-size: 1.5rem;
   font-weight: 700;
   text-align: center;
-  color: #4b5563; /* Adjusted color for light mode */
-  &.dark {
-    color: #f9fafb;
+  color: #4b5563; 
+}
+
+body.dark-mode .my-customer-input {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #f9fafb;
+  &:focus {
+    ring: 1px solid #3b82f6;
+    border-color: #3b82f6;
   }
+}
+
+body.dark-mode .my-customer-card {
+  background-color: #1f2937;
+  border-color: #fdfeff;
+}
+
+body.dark-mode .my-customer-title {
+  color: #f9fafb;
 }

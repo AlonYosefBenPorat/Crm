@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { getAllEmployees } from '../services/EmployeeService';
-import { getServerData } from '../services/ServerService';
+import { getServerData } from '../services/serverService';
 import { getNetworkDeviceData } from '../services/networkDeviceService';
 import { getFirewallData } from '../services/firewallService';
 import { getBackupData } from '../services/backupService';
@@ -27,8 +27,6 @@ const CustomerChart = () => {
         const networkDeviceData = await getNetworkDeviceData(selectedCustomerId);
         const gatewayData = await getFirewallData(selectedCustomerId);
         const backupData = await getBackupData(selectedCustomerId);
-
-        // Calculate the number of employees and servers
         const employeeCount = employeeData.length;
         const serverCount = serverData.length;
         const networkDeviceCount = networkDeviceData.length;
@@ -44,8 +42,6 @@ const CustomerChart = () => {
         ];
 
         setData(chartData);
-
-        // Filter warranties and licenses
         const now = new Date();
         const oneMonthFromNow = new Date();
         oneMonthFromNow.setMonth(oneMonthFromNow.getMonth() + 1);
@@ -98,7 +94,7 @@ const CustomerChart = () => {
       bar: {
         columnWidth: '40%',
         borderRadius: 2,
-        distributed: true, // This ensures each bar has a different color
+        distributed: true, 
       },
     },
     xaxis: {
