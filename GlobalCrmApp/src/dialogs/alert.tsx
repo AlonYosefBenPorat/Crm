@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 interface AlertProps {
   type: 'info' | 'danger' | 'success' | 'warning' | 'dark';
   message: string;
-  onClose: () => void; // Add a callback function to handle closing the alert
+  onClose: () => void; 
 }
 
 const Alert: React.FC<AlertProps> = ({ type, message, onClose }) => {
@@ -12,10 +12,10 @@ const Alert: React.FC<AlertProps> = ({ type, message, onClose }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisible(false);
-      onClose(); // Call the onClose callback to handle closing the alert
-    }, 3000); // 3 seconds
+      onClose(); 
+    }, 3000); 
 
-    return () => clearTimeout(timer); // Cleanup the timer on component unmount
+    return () => clearTimeout(timer); 
   }, [onClose]);
 
   if (!visible) return null;

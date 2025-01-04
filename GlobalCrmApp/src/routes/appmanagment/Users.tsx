@@ -3,7 +3,7 @@ import { usersService } from '../../services/usersService';
 import UsersToolbar from '../../components/UsersToolbar';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 import AddUser from '../AddUser';
-import EditUser from './EditUser'; // Import the EditUser component
+import EditUser from './EditUser'; 
 import { showErrorDialog, showSuccessDialog } from '../../dialogs/dialogs';
 import { DarkModeContext } from '../../contexts/DarkModeContext';
 import '../../css/table.scss';
@@ -13,10 +13,10 @@ const Users: React.FC = () => {
   const [selectedUsers, setSelectedUsers] = useState<{ [key: string]: any }>({});
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [selectedUserEmail, setSelectedUserEmail] = useState<string | null>(null);
-  const [isAddUserOpen, setIsAddUserOpen] = useState(false); // State to control AddUser modal
-  const [isEditUserOpen, setIsEditUserOpen] = useState(false); // State to control EditUser modal
-  const [selectedUserId, setSelectedUserId] = useState<string | null>(null); // State to store selected user ID for editing
-  const [editingJobTitle, setEditingJobTitle] = useState<{ [key: string]: string }>({}); // State to store editing job titles
+  const [isAddUserOpen, setIsAddUserOpen] = useState(false);
+  const [isEditUserOpen, setIsEditUserOpen] = useState(false); 
+  const [selectedUserId, setSelectedUserId] = useState<string | null>(null); 
+  const [editingJobTitle, setEditingJobTitle] = useState<{ [key: string]: string }>({}); 
   const { darkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ const Users: React.FC = () => {
     try {
       const response = await usersService.getUsers();
       setUsers(response);
-      setFilteredUsers(response); // Update filteredUsers as well
+      setFilteredUsers(response); 
     } catch (error) {
       console.error('Error refreshing Users:', error);
     }

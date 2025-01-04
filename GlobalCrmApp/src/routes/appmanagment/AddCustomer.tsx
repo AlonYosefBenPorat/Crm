@@ -78,13 +78,13 @@ const AddCustomer: React.FC<AddCustomerProps> = ({ onClose, refreshTable }) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
 
-      // Check file size (limit to 30 MB)
-      if (file.size > 30 * 1024 * 1024) {
+      
+      if (file.size > 34 * 1024 * 1024) {
         alert('File size exceeds 30 MB');
         return;
       }
 
-      // Check file type (allow only JPG, PNG, GIF, BMP, WEBP)
+     
       const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/webp'];
       if (!allowedTypes.includes(file.type)) {
         alert('Only JPG, PNG, GIF, BMP, and WEBP files are allowed');

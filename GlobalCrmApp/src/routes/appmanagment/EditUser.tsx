@@ -40,8 +40,8 @@ const EditUser: React.FC<EditUserProps> = ({ onClose, userId, refreshTable }) =>
   const formatDate = (dateString: string) => {
     if (!dateString) return '';
     const date = new Date(dateString);
-    const offset = date.getTimezoneOffset() * 60000; // Get the timezone offset in milliseconds
-    const localDate = new Date(date.getTime() - offset); // Adjust the date by the offset
+    const offset = date.getTimezoneOffset() * 60000; 
+    const localDate = new Date(date.getTime() - offset); 
     return localDate.toLocaleString('en-GB', {
       day: '2-digit',
       month: '2-digit',
@@ -112,7 +112,6 @@ const EditUser: React.FC<EditUserProps> = ({ onClose, userId, refreshTable }) =>
         profileSrc: values.profileSrc,
       };
 
-      console.log('Updating user with details:', userDetails); // Log the userDetails object
 
       await usersService.updateUserDetails(userId, userDetails);
       onClose();

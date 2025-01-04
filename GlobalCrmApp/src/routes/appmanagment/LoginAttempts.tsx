@@ -57,7 +57,6 @@ const LoginAttempts: React.FC = () => {
 
   const successCount = filteredLoginAttempts.filter((attempt: any) => attempt.isSucceeded).length;
   const failureCount = filteredLoginAttempts.length - successCount;
-
   const groupedSuccessAttempts = mapValues(
     groupBy(filteredLoginAttempts.filter((attempt: any) => attempt.isSucceeded), (attempt: any) => {
       const date = new Date(attempt.attemptedAt);
@@ -81,7 +80,7 @@ const LoginAttempts: React.FC = () => {
   const lineOptions = {
     chart: {
       height: '100%',
-      type: 'line',
+      type: 'line' as const,
       fontFamily: 'Inter, sans-serif',
       dropShadow: {
         enabled: false,
@@ -101,7 +100,7 @@ const LoginAttempts: React.FC = () => {
     },
     stroke: {
       width: 6,
-      curve: 'smooth',
+      curve: 'smooth' as const,
     },
     grid: {
       show: true,
@@ -116,12 +115,12 @@ const LoginAttempts: React.FC = () => {
       {
         name: 'Success',
         data: successData,
-        color: '#66FF00', // Blue
+        color: '#66FF00', 
       },
       {
         name: 'Failure',
         data: failureData,
-        color: '#8B0000', // Purple
+        color: '#8B0000', 
       },
     ],
     xaxis: {
@@ -155,7 +154,7 @@ const LoginAttempts: React.FC = () => {
       chart: {
         height: 420,
         width: "100%",
-        type: "pie",
+        type: "pie" as const, // Ensure type is one of the allowed string literals
       },
       stroke: {
         colors: ["white"],

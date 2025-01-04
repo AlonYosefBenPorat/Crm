@@ -46,7 +46,6 @@ const showAutoCloseAlert = (title: string = "success"): void => {
     }
   }).then((result) => {
     if (result.dismiss === Swal.DismissReason.timer) {
-      console.log("I was closed by the timer");
     }
   });
 };
@@ -56,7 +55,7 @@ const showSuccessDialog = (message: string) => {
     title: 'Success',
     text: message,
     icon: 'success',
-    timer: 2000, // Close after 2 seconds
+    timer: 2000, 
     showConfirmButton: false,
     customClass: {
       popup: 'swal2-front'
@@ -69,7 +68,7 @@ const showErrorDialog = (message: string) => {
     title: 'Error',
     text: message,
     icon: 'error',
-    timer: 2000, // Close after 2 seconds
+    timer: 2000, 
     showConfirmButton: false,
     customClass: {
       popup: 'swal2-front'
