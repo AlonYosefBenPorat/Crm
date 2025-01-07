@@ -118,7 +118,7 @@ const Asset: React.FC<AssetProps> = ({ onClose, customerId, customerName }) => {
       });
       refreshTable();
     } catch (error) {
-      console.error('Error adding asset data:', error.response); // Log the error response
+      console.error('Error adding asset data:', error.response); 
       setError('Failed to save asset');
       showErrorDialog('Failed to save asset');
     }

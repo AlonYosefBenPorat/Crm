@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
-import { getAllEmployees } from '../../services/EmployeeService'; // Adjust the import path as needed
+import { getAllEmployees } from '../../services/EmployeeService'; 
 
 interface Employee {
   fullName: string;

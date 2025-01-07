@@ -115,13 +115,13 @@ body.light-mode .icon-button {
 body.dark-mode .left-section,
 body.dark-mode .middle-section,
 body.dark-mode .right-section {
-  background-color: #5d5b5b;
+  
   color: #fff;
 }
 
 body.dark-mode .select-customer,
 body.dark-mode .select-user {
-  background-color: #5d5b5b;
+
   color: #fff;
 }
 
@@ -191,7 +191,7 @@ body.light-mode .table-container {
 body.dark-mode .table th {
   background-color: #374151;
   color: #d1d5db;
-  border: 2px solid #555; /* Add border for table headers in dark mode */
+  border: 2px solid #555; 
 }
 
 .table td {

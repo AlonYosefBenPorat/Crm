@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Select, MenuItem, TextField, SelectChangeEvent } from '@mui/material';
-import { RiDeleteBin5Line, RiRefreshLine } from 'react-icons/ri';
+import { RiDeleteBin5Line } from 'react-icons/ri';
 import { MdAddCard } from 'react-icons/md';
 import '../css/ticketToolbar.scss';
 import { getAllCustomers } from '../services/customerSerivce';
@@ -175,7 +175,7 @@ const TicketToolbar: React.FC<TicketToolbarProps> = ({ onNewTicket, onDeleteTick
         </div>
 
         <div className="right-section">
-          <RiRefreshLine className="icon-button" onClick={() => console.log('Refresh')} aria-label="Refresh" title="Refresh" />
+          
           <MdAddCard className="icon-button" onClick={onNewTicket} aria-label="New Ticket" title="New Ticket" />
           {isGlobalAdmin && (
             <RiDeleteBin5Line className="icon-button" onClick={onDeleteTicket} aria-label="Delete Ticket" title="Delete Ticket" />

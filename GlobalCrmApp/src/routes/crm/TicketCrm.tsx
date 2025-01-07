@@ -146,7 +146,7 @@ const TicketCrm: React.FC = () => {
         onCustomerChange={handleCustomerChange}
         onUserChange={handleUserChange}
         onSearchTermChange={handleSearchTermChange}
-        onTicketNumberChange={handleTicketNumberChange} // Pass the new prop
+        onTicketNumberChange={handleTicketNumberChange}
       />
 
       <TableContainer component={Paper} className={`table-container ${darkMode ? 'dark-mode' : ''}`}>

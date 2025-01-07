@@ -48,8 +48,8 @@ const TicketActivity = () => {
   const [selectedRow, setSelectedRow] = useState<number | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState<any>(null);
-  const [reloadKey, setReloadKey] = useState(0); // State variable to trigger re-render
-  const [newActivityOpen, setNewActivityOpen] = useState(false); // State for NewActivity modal
+  const [reloadKey, setReloadKey] = useState(0);
+  const [newActivityOpen, setNewActivityOpen] = useState(false);
 
   useEffect(() => {
     refreshData();
@@ -61,22 +61,19 @@ const TicketActivity = () => {
   };
 
   const handleRowDoubleClick = (activity: any) => {
-    console.log('Row double clicked:', activity);
     setSelectedActivity(activity);
     setDrawerOpen(true);
   };
 
   const handleCloseDrawer = () => {
-    console.log('Closing drawer');
     setDrawerOpen(false);
     setSelectedActivity(null);
     refreshData();
   };
 
   const handleRefreshData = async () => {
-    
-    await refreshData(); 
-    setReloadKey((prevKey) => prevKey + 1); 
+    await refreshData();
+    setReloadKey((prevKey) => prevKey + 1);
   };
 
   const handleOpenNewActivity = () => {
@@ -88,18 +85,17 @@ const TicketActivity = () => {
   };
 
   const handleDeleteActivity = async () => {
-  const activity = JSON.parse(localStorage.getItem('selectedActivity'));
-  if (activity) {
-    try {
-      await deleteUserActivity(activity.ticketId, activity.userActivityId);
-      showDeleteConfirmation();
-      await refreshData();
-
-    } catch (error) {
-      console.error('Error deleting activity:', error);
+    const activity = JSON.parse(localStorage.getItem('selectedActivity'));
+    if (activity) {
+      try {
+        await deleteUserActivity(activity.ticketId, activity.userActivityId);
+        showDeleteConfirmation();
+        await refreshData();
+      } catch (error) {
+        console.error('Error deleting activity:', error);
+      }
     }
-  }
-};
+  };
 
   const totalDuration = calculateTotalDuration(activities);
 
@@ -144,7 +140,7 @@ const TicketActivity = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      {drawerOpen && <EditActivity activity={selectedActivity} onClose={handleCloseDrawer} refreshData={refreshData} />}
+      <EditActivity activity={selectedActivity} open={drawerOpen} onClose={handleCloseDrawer} refreshData={refreshData} />
       <NewActivity open={newActivityOpen} onClose={handleCloseNewActivity} ticketId={selectedTicket.ticketId} refreshData={refreshData} />
     </div>
   );

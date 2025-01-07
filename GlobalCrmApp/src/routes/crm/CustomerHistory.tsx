@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { getTicketByCustomerId } from '../../services/TicketServices';
 import { formatDate } from '../../helperFunction/formatDate';
+import '../../css/subActivityTabs.scss';
 
 
 interface Ticket {
@@ -38,7 +39,7 @@ const CustomerHistory = ({ customerId }) => {
   }, [customerId]);
 
   return (
-    <Table className="customer-history-table">
+    <Table >
       <TableHead>
         <TableRow>
           <TableCell>Id</TableCell>

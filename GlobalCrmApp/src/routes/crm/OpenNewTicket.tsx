@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField, Select, MenuItem, FormControl, InputLabel } from '@mui/material';
 import { getAllCustomers } from '../../services/customerSerivce';
 import { getAllEmployees } from '../../services/EmployeeService';
 import { usersService } from '../../services/usersService';
+import { DarkModeContext } from '../../contexts/DarkModeContext';
+import '../../css/ticketModal.scss';
+import { MdOutlineCancelPresentation } from 'react-icons/md';
+import { BsCloudUpload } from 'react-icons/bs';
 
 interface OpenNewTicketProps {
   open: boolean;
@@ -11,6 +15,7 @@ interface OpenNewTicketProps {
 }
 
 const OpenNewTicket: React.FC<OpenNewTicketProps> = ({ open, onClose, onSave }) => {
+  const { darkMode } = useContext(DarkModeContext);
   const [customers, setCustomers] = useState<any[]>([]);
   const [employees, setEmployees] = useState<any[]>([]);
   const [users, setUsers] = useState<any[]>([]);
@@ -39,7 +44,6 @@ const OpenNewTicket: React.FC<OpenNewTicketProps> = ({ open, onClose, onSave }) 
     if (selectedCustomer) {
       const fetchEmployees = async () => {
         try {
-          console.log(`Fetching employees for customer ID: ${selectedCustomer}`);
           const employeeData = await getAllEmployees(selectedCustomer);
           setEmployees(employeeData);
         } catch (error) {
@@ -49,7 +53,7 @@ const OpenNewTicket: React.FC<OpenNewTicketProps> = ({ open, onClose, onSave }) 
 
       fetchEmployees();
     } else {
-      setEmployees([]); 
+      setEmployees([]);
     }
   }, [selectedCustomer]);
 
@@ -94,7 +98,7 @@ const OpenNewTicket: React.FC<OpenNewTicketProps> = ({ open, onClose, onSave }) 
       assignedTo: selectedUser,
       hashTag: hashTags,
     };
-    console.log('Saving ticket with data:', ticketData); // Log the ticket data
+
     onSave(ticketData);
     onClose();
   };
@@ -104,7 +108,7 @@ const OpenNewTicket: React.FC<OpenNewTicketProps> = ({ open, onClose, onSave }) 
   };
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={onClose} className={`ticket-modal ${darkMode ? 'dark-mode' : ''}`}>
       <DialogTitle>Open New Ticket</DialogTitle>
       <DialogContent>
         <FormControl fullWidth margin="normal">
@@ -125,7 +129,6 @@ const OpenNewTicket: React.FC<OpenNewTicketProps> = ({ open, onClose, onSave }) 
           <Select
             value={selectedEmployee || ''}
             onChange={(e) => {
-              console.log('Selected employee:', e.target.value); // Log the selected employee
               setSelectedEmployee(e.target.value as string);
             }}
             disabled={!selectedCustomer}
@@ -182,12 +185,20 @@ const OpenNewTicket: React.FC<OpenNewTicketProps> = ({ open, onClose, onSave }) 
         />
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} className='icon-button'>
-          Cancel
-        </Button>
-        <Button onClick={handleSave} className='icon-button'>
-          Save
-        </Button>
+        <MdOutlineCancelPresentation
+          onClick={onClose}
+          className='icon-button-danger'
+          title='Cancel'
+          aria-label='Cancel'
+        >
+        </MdOutlineCancelPresentation>
+        <BsCloudUpload
+          onClick={handleSave}
+          className='icon-button'
+          title='Save'
+          aria-label='Save'
+        >
+        </BsCloudUpload >
       </DialogActions>
     </Dialog>
   );

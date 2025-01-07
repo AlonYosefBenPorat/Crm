@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../../css/editActivity.module.scss';
-import { TextField, Button, MenuItem } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, MenuItem, IconButton } from '@mui/material';
+import { VscDebugStart, VscDebugPause, VscDebugStop } from 'react-icons/vsc';
+import { MdClose, MdDownloadDone } from 'react-icons/md';
 import { usersService } from '../../services/usersService';
 import { useTimer } from '../../helperFunction/timerHelper';
-import { VscDebugStart, VscDebugPause, VscDebugStop } from 'react-icons/vsc';
 import DigitalClock from '../../helperFunction/digitalClock';
 import { addActivityToTicket } from '../../services/TicketServices';
 import { useTicketContext } from '../../contexts/TicketContext';
 import { showErrorDialog, showSuccessDialog } from '../../dialogs/dialogs';
+import '../../css/editActivity.module.scss';
 
-const NewActivity = ({ open, onClose }) => {
-  const { selectedTicket, refreshData } = useTicketContext();
+const NewActivity = ({ open, onClose, ticketId }) => {
+  const { refreshData } = useTicketContext();
   const [users, setUsers] = useState([]);
   const [username, setUsername] = useState('');
   const [description, setDescription] = useState('');
   const [date, setDate] = useState('');
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
-  const { isRunning, isPaused, elapsedTime, startTimer, pauseTimer, resumeTimer, stopTimer, setElapsedTime } = useTimer();
+  const { isRunning, isPaused, elapsedTime, startTimer, pauseTimer, resumeTimer, stopTimer } = useTimer();
 
   useEffect(() => {
     usersService.getUsers().then(setUsers);
@@ -26,19 +27,16 @@ const NewActivity = ({ open, onClose }) => {
   useEffect(() => {
     if (open) {
       const now = new Date();
-      setDate(now.toISOString().split('T')[0]); // Set date in YYYY-MM-DD format
+      setDate(now.toISOString().split('T')[0]);
       setStartTime(now.toTimeString().split(' ')[0].slice(0, 5));
       const loggedOnUser = JSON.parse(localStorage.getItem('JwtToken'));
       if (loggedOnUser && loggedOnUser.userID) {
         setUsername(loggedOnUser.userID);
       }
-      if (elapsedTime > 0) {
-        resumeTimer(); // Resume the timer if it was previously running
-      } else {
-        startTimer(); // Start the timer when the form is opened for the first time
-      }
+      startTimer();
     } else {
-      pauseTimer(); // Pause the timer when the form is closed
+      pauseTimer();
+      resetForm();
     }
   }, [open]);
 
@@ -55,7 +53,7 @@ const NewActivity = ({ open, onClose }) => {
 
   const handleStopTimer = () => {
     const { startTime, endTime, elapsedTime } = stopTimer();
-    const roundedElapsedTime = Math.ceil(elapsedTime / 60) * 60; // Round up to the nearest minute
+    const roundedElapsedTime = Math.ceil(elapsedTime / 60) * 60;
     const endDateTime = new Date(startTime.getTime() + roundedElapsedTime * 1000);
     setStartTime(startTime ? startTime.toTimeString().split(' ')[0].slice(0, 5) : '');
     setEndTime(endDateTime ? endDateTime.toTimeString().split(' ')[0].slice(0, 5) : '');
@@ -63,24 +61,23 @@ const NewActivity = ({ open, onClose }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!selectedTicket || !selectedTicket.ticketId) {
+    if (!ticketId) {
       console.error('Ticket ID is undefined');
       return;
     }
     const formattedStartTime = `${date}T${startTime}:00Z`;
     const formattedEndTime = `${date}T${endTime}:00Z`;
     const newActivity = {
-      ticketId: selectedTicket.ticketId,
+      ticketId,
       userId: username,
       description,
       startTime: formattedStartTime,
       endTime: formattedEndTime,
     };
     try {
-      console.log('Saving activity:', newActivity);
-      await addActivityToTicket(selectedTicket.ticketId, newActivity);
+      await addActivityToTicket(ticketId, newActivity);
       showSuccessDialog('Activity added successfully');
-      await refreshData(); 
+      await refreshData();
       onClose();
     } catch (error) {
       console.error('Error adding activity:', error);
@@ -88,44 +85,51 @@ const NewActivity = ({ open, onClose }) => {
     }
   };
 
+  const resetForm = () => {
+    const loggedOnUser = JSON.parse(localStorage.getItem('JwtToken'));
+   
+    setDescription('');
+    setDate('');
+    setStartTime('');
+    setEndTime('');
+  };
+
   return (
-    open && (
-      <div className={styles.drawer} aria-labelledby="drawer-bottom-label">
-        <div className={styles.drawerLarge}>
-          <button type="button" onClick={onClose} className={styles.closeButton}>
-            <svg className={styles.closeIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          </button>
-          <h5 id="drawer-bottom-label" className={styles.drawerLabel}>
-            Add New Activity
-          </h5>
-          <div style={{ display: 'flex', alignItems: 'center', border: '3px solid #ccc', padding: '10px', borderRadius: '5px', marginBottom: '2rem' }}>
-            <DigitalClock elapsedTime={elapsedTime} isPaused={isPaused} isRunning={isRunning} />
-            <div className="timer-controls" style={{ display: 'flex', marginLeft: 'auto' }}>
-              {isRunning && !isPaused ? (
-                <div className="icon-wrapper" onClick={pauseTimer}>
-                  <VscDebugPause className="icon-button" />
-                </div>
-              ) : (
-                <div className="icon-wrapper" onClick={isPaused ? resumeTimer : startTimer}>
-                  <VscDebugStart className="icon-button" />
-                </div>
-              )}
-              <div className={`icon-wrapper ${!isRunning ? 'disabled' : ''}`} onClick={handleStopTimer}>
-                <VscDebugStop className="icon-button" />
+    <Dialog open={open} onClose={onClose} aria-labelledby="new-activity-dialog-title" maxWidth="sm" fullWidth>
+      <DialogTitle id="new-activity-dialog-title">
+        Add New Activity
+        <IconButton aria-label="close" onClick={onClose} style={{ position: 'absolute', right: 8, top: 8 }}>
+          <MdClose />
+        </IconButton>
+      </DialogTitle>
+      <DialogContent dividers>
+        <div style={{ display: 'flex', alignItems: 'center', border: '3px solid #ccc', padding: '10px', borderRadius: '5px', marginBottom: '2rem' }}>
+          <DigitalClock elapsedTime={elapsedTime} isPaused={isPaused} isRunning={isRunning} />
+          <div className="timer-controls" style={{ display: 'flex', marginLeft: 'auto' }}>
+            {isRunning && !isPaused ? (
+              <div className="icon-wrapper" onClick={pauseTimer}>
+                <VscDebugPause className="icon-button" />
               </div>
+            ) : (
+              <div className="icon-wrapper" onClick={isPaused ? resumeTimer : startTimer}>
+                <VscDebugStart className="icon-button" />
+              </div>
+            )}
+            <div className={`icon-wrapper ${!isRunning ? 'disabled' : ''}`} onClick={handleStopTimer}>
+              <VscDebugStop className="icon-button" />
             </div>
           </div>
-          <form onSubmit={handleSubmit}>
-            <div className={styles.formGroup}>
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="formGroup">
+            <div className="field-wrapper">
+              <label>User</label>
               <TextField
                 select
-                label="User"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 fullWidth
-                className={styles.textField}
+                className="textField"
               >
                 {users.map((user) => (
                   <MenuItem key={user.id} value={user.id}>
@@ -133,58 +137,58 @@ const NewActivity = ({ open, onClose }) => {
                   </MenuItem>
                 ))}
               </TextField>
+            </div>
+            <div className="field-wrapper">
+              <label>Description</label>
               <TextField
-                label="Description"
                 type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 fullWidth
                 multiline
                 rows={4}
-                className={styles.textField}
+                className="textField"
               />
+            </div>
+            <div className="field-wrapper">
+              <label>Date</label>
               <TextField
-                label="Date"
                 type="date"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 fullWidth
-                className={styles.textField}
+                className="textField"
               />
-              <div className={styles.timePicker}>
-                <label>Start Time</label>
-                <TextField
-                  type="time"
-                  value={startTime}
-                  onChange={(e) => setStartTime(e.target.value)}
-                  fullWidth
-                  className={styles.textField}
-                />
-              </div>
-              <div className={styles.timePicker}>
-                <label>End Time</label>
-                <TextField
-                  type="time"
-                  value={endTime}
-                  onChange={(e) => setEndTime(e.target.value)}
-                  fullWidth
-                  className={styles.textField}
-                />
-              </div>
             </div>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              className={styles.saveButton}
-              style={{ marginTop: '1rem' }}
-            >
-              Add Activity
-            </Button>
-          </form>
-        </div>
-      </div>
-    )
+            <div className="field-wrapper">
+              <label>Start Time</label>
+              <TextField
+                type="time"
+                value={startTime}
+                onChange={(e) => setStartTime(e.target.value)}
+                fullWidth
+                className="textField"
+              />
+            </div>
+            <div className="field-wrapper">
+              <label>End Time</label>
+              <TextField
+                type="time"
+                value={endTime}
+                onChange={(e) => setEndTime(e.target.value)}
+                fullWidth
+                className="textField"
+              />
+            </div>
+          </div>
+          <DialogActions>
+            <IconButton aria-label="add activity" onClick={handleSubmit} className="icon-button">
+              <MdDownloadDone />
+            </IconButton>
+          </DialogActions>
+        </form>
+      </DialogContent>
+    </Dialog>
   );
 };
 

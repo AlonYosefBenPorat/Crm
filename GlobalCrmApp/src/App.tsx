@@ -57,12 +57,16 @@ function App() {
   return (
     <ErrorBoundary>
       <NavBar openModal={openModal} openResetPasswordModal={openResetPasswordModal} />
+      <Routes>
+        
+         <Route path="/SystemInfo" element={<SystemInfo />} />
+     </Routes>
       {isLoggedIn ? (
         <LayoutWithSidebar isLoggedIn={isLoggedIn}>
           <Routes>
             {/* CRM Public Routes */}
             <Route path='landing-page' element={<LandingPage />} />
-            <Route path="/SystemInfo" element={<SystemInfo />} />
+           
 
             {/* CRM Protected Routes  All Users With Role assigned */}
             <Route element={<ProtectedRoute allowedRoles={['GlobalAdmin', 'RedearAdmin', 'ServiceAdmin', 'Viewer']} />}>

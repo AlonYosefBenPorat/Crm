@@ -271,12 +271,11 @@ const TicketOpenModal: React.FC<TicketOpenModalProps> = ({ open, onClose, ticket
         </div>
       </div>
 
-      {/* Border between sections */}
           <div className="section-divider"></div>
           <div style={{ display: 'flex', justifyContent: 'end', alignItems: 'center', marginTop: '1px' }}>
             <CiSaveUp2 onClick={handleSave} className='icon-button' aria-label='Save' title='Save'></CiSaveUp2>
           </div>
-      {/* User Activity */}
+
       <div className="user-activity">
         <div className="activity-content">
           <SubActivityTabs ticket={ticket} activities={activities} refreshData={refreshData} refreshActivity={refreshSelectedActivity} />
@@ -291,11 +290,14 @@ const TicketOpenModal: React.FC<TicketOpenModalProps> = ({ open, onClose, ticket
     <>
       <EditActivity
         activity={selectedActivity}
-        onClose={handleCloseDrawer}
+            onClose={handleCloseDrawer}
+            open={true}
       />
       <NewActivity
         open={true}
-        onClose={handleCloseDrawer}
+            onClose={handleCloseDrawer}
+            ticketId={ticket.ticketId}
+            
           />
        
     </>

@@ -1,0 +1,106 @@
+.ticket-modal {
+  .MuiPaper-root {
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .MuiInputBase-root {
+    background-color: #f0f0f0;
+    color: #000000;
+  }
+
+  .MuiInputLabel-root {
+    color: #000000;
+  }
+
+  .MuiSelect-icon {
+    color: #000000;
+  }
+
+  .MuiOutlinedInput-notchedOutline {
+    border-color: #cccccc;
+  }
+
+  .icon-button {
+    background-color: #1a20c8;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    margin-right: 4px;
+
+    &:hover {
+      background-color: darken(#6200ea, 10%);
+    }
+  }
+
+  .icon-button-danger {
+    background-color: #dc4f4d;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    margin-left: 2px;
+    margin-right: 4px;
+
+    &:hover {
+      background-color: darken(#f10a0a, 10%);
+      transform: scale(1.5);
+    }
+  }
+
+  &.dark-mode {
+    .MuiPaper-root {
+      background-color: #2c2c2c;
+      color: #ffffff;
+    }
+
+    .MuiInputBase-root {
+      background-color: #3a3a3a;
+      color: #ffffff;
+    }
+
+    .MuiInputLabel-root {
+      color: #ffffff;
+    }
+
+    .MuiSelect-icon {
+      color: #ffffff;
+    }
+
+    .MuiOutlinedInput-notchedOutline {
+      border-color: #444444;
+    }
+
+    .icon-button {
+      background-color: #6200ea;
+      color: #ffffff;
+
+      &:hover {
+        background-color: darken(#6200ea, 10%);
+      }
+    }
+
+    .icon-button-danger {
+      background-color: #e53935;
+      color: #ffffff;
+      
+
+      &:hover {
+        background-color: darken(#e53935, 10%);
+      }
+    }
+  }
+}

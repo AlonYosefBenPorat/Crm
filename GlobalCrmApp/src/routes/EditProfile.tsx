@@ -8,6 +8,7 @@ import 'react-easy-crop/react-easy-crop.css';
 import '../css/editprofile.scss';
 import { usersService } from '../services/usersService';
 import { DarkModeContext } from '../contexts/DarkModeContext'; // Assuming you have a DarkModeContext
+import { showErrorDialog, showSuccessDialog } from '../dialogs/dialogs';
 
 const validationSchema = Yup.object({
   firstName: Yup.string().required('First Name is required').min(2, 'First Name must be at least 2 characters').max(40, 'First Name must be at most 40 characters'),
@@ -20,7 +21,7 @@ const capitalizeFirstLetter = (string) => {
 };
 
 const EditProfile = () => {
-  const { darkMode } = useContext(DarkModeContext); // Use context to get dark mode state
+  const { darkMode } = useContext(DarkModeContext); 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -72,11 +73,14 @@ const EditProfile = () => {
 
           const uploadedUrl = await uploadImage(file);
           newProfileSrc = uploadedUrl;
-          newProfileAlt = 'Profile Image'; // Set a new alt text for the profile image
+          newProfileAlt = 'Profile Image'; 
           setProfileSrc(newProfileSrc);
           setProfileAlt(newProfileAlt);
+          showSuccessDialog('Image uploaded successfully!');
         } catch (error) {
           console.error('Error uploading image:', error);
+          showErrorDialog('Error uploading image');
+
         }
       }
       const userDetails = {
@@ -91,12 +95,13 @@ const EditProfile = () => {
           src: newProfileSrc,
         },
       };
-      console.log('Updating user details:', userDetails); // Debug log
       await usersService.updateUserDetails(userId, userDetails);
       setShowAlert(true);
       setTimeout(() => setShowAlert(false), 3000);
+      showSuccessDialog('Profile updated successfully!');
     } catch (error) {
       console.error('Error updating profile:', error);
+       showErrorDialog('Error updating profile');
     } finally {
       setSubmitting(false);
     }

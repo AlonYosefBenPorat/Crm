@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { DarkModeContext } from '../contexts/DarkModeContext';
+import { showErrorDialog, showSuccessDialog } from '../dialogs/dialogs';
 
 const ResetPasswordModal = ({ isOpen, closeModal }) => {
   const { darkMode } = useContext(DarkModeContext);
@@ -59,13 +60,16 @@ const ResetPasswordModal = ({ isOpen, closeModal }) => {
       const token = localStorage.getItem('resetToken');
       if (!token) {
         setSubmitting(false);
+        showErrorDialog('Failed to get reset token');
         return;
       }
 
       await resetPassword(email, newPassword);
       localStorage.removeItem('resetToken');
       closeModal();
+      showSuccessDialog('Password reset successfully!');
     } catch (error) {
+      showErrorDialog('Error resetting password');
     } finally {
       setSubmitting(false);
     }

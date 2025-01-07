@@ -3,7 +3,7 @@ import { Card, CardContent, Grid, Typography, Button, Table, TableBody, TableCel
 import { useNavigate } from 'react-router-dom';
 import { getActiveTickets } from '../services/TicketServices';
 import { getUserPermissions } from '../services/userPermissionService';
-
+import '../css/home.scss';
 
 const Home: React.FC = () => {
   const [firstName, setFirstName] = useState<string | null>(null);
@@ -24,14 +24,12 @@ const Home: React.FC = () => {
       setStoredLastName(storedLastName);
     }
 
-
     const fetchOpenTickets = async () => {
       const tickets = await getActiveTickets();
       setOpenTickets(tickets.length);
     };
 
     fetchOpenTickets();
-
 
     const fetchPermissions = async () => {
       if (userId) {
@@ -42,7 +40,6 @@ const Home: React.FC = () => {
 
     fetchPermissions();
 
-    
     const timer = setInterval(() => {
       const now = new Date();
       setCurrentTime(now.toLocaleTimeString());
@@ -64,82 +61,49 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className='mt-16'>
-      <Typography variant="h4" gutterBottom>
-        Home
-      </Typography>
+    <div className='home-container'>
+     
       <Typography variant="h5" gutterBottom>
         {greeting} {firstName} {storedLastName}
       </Typography>
       <Typography variant="h6" gutterBottom>
-        Today's Date: {currentDate}
+        Today's Date:{currentDate}
       </Typography>
       <Grid container spacing={4}>
         <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
+          <Card className="card">
+            <CardContent className="card-content">
+              <Typography className="card-title" variant="h6" gutterBottom>
                 Open Tickets
               </Typography>
-              <Typography variant="body1">
+              <Typography className="card-text" variant="body1">
                 {openTickets}
               </Typography>
             </CardContent>
           </Card>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
+          <Card className="card">
+            <CardContent className="card-content">
+              <Typography className="card-title" variant="h6" gutterBottom>
                 Current Time
               </Typography>
-              <Typography variant="body1">
+              <Typography className="card-text" variant="body1">
                 {currentTime}
               </Typography>
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Your Customer Permissions
-              </Typography>
-              <TableContainer component={Paper}>
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Customer Name</TableCell>
-                      <TableCell>Permission</TableCell>
-                      <TableCell>Action</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {permissions.map((permission) => (
-                      <TableRow key={permission.customerId}>
-                        <TableCell>{permission.customerName}</TableCell>
-                        <TableCell>{permission.permission}</TableCell>
-                        <TableCell>
-                          <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={() => navigate(`/customer/${permission.customerId}`)}
-                          >
-                            View Customer
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </TableContainer>
-            </CardContent>
-          </Card>
-        </Grid>
+  
       </Grid>
-      <Button variant="contained" color="primary" onClick={() => navigate('/ticketCrm')}>
+      <Button variant="contained" color="primary" className="button" onClick={() => navigate('/ticketCrm')}>
         Go to Ticket CRM
       </Button>
+       <footer className="footer">
+        <Typography variant="body2" align="center">
+          All rights reserved Alon Ben Porat
+        </Typography>
+      </footer>
     </div>
   );
 };

@@ -43,7 +43,7 @@ const SubActivityTabs: React.FC<SubActivityTabsProps> = ({ ticket, activities, r
         );
       case 'History':
         return <CustomerHistory customerId={ticket.customerId}/>;
-      case 'Customer Employee':
+      case 'Employee':
         return <CustomerEmpolyee customerId={ticket.customerId}/>;
       default:
         return null;
@@ -53,7 +53,7 @@ const SubActivityTabs: React.FC<SubActivityTabsProps> = ({ ticket, activities, r
   return (
     <div className="sub-activity-tabs">
       <ul className="tabs">
-        {['Submission', 'History', 'Customer Employee'].map((tab) => (
+        {['Submission', 'History', 'Employee'].map((tab) => (
           <li key={tab}>
             <button
               onClick={() => setActiveTab(tab)}
