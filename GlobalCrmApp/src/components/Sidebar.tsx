@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaUsers, FaUserShield, FaCog } from 'react-icons/fa';
 import { CiMenuBurger } from 'react-icons/ci';
-import { BsBuilding, BsBuildingFillGear } from 'react-icons/bs';
+import { BsBuilding, BsBuildingFillGear, BsPersonLock } from 'react-icons/bs';
 import { GrShieldSecurity } from 'react-icons/gr';
 import { MdHistory } from 'react-icons/md';
 import { DarkModeContext } from '../contexts/DarkModeContext';
@@ -22,6 +22,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, isLoggedIn }) => {
   const menuItems = [
     { name: 'TicketCrm', icon: <RiAppsLine title='TicketCrm' aria-label='TicketCrm' />, roles: ['GlobalAdmin', 'RedearAdmin', 'ServiceAdmin', 'Viewer'] },
     { name: 'Users', icon: <FaUsers title='Users' aria-label='Users' />, roles: ['GlobalAdmin', 'RedearAdmin', 'ServiceAdmin'] },
+    {name: 'ReleaseAccount', icon:<BsPersonLock title='Release Account' aria-label='Release Account' />, roles: ['GlobalAdmin', 'ServiceAdmin']},
     { name: 'Customer-Directory', icon: <FaUsersRectangle title='Customer Directory' aria-label='Customer Directory' />, roles: ['GlobalAdmin', 'ServiceAdmin'] },
     { name: 'My-Customers', icon: <BsBuilding title='My-Customers' aria-label='My-Customers' />, roles: ['GlobalAdmin', 'RedearAdmin', 'ServiceAdmin', 'Viewer'] },
     { name: 'Roles', icon: <FaUserShield title='Roles' aria-label='Roles' />, roles: ['GlobalAdmin', 'RedearAdmin', 'ServiceAdmin'] },

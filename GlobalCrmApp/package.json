@@ -32,8 +32,10 @@
     "react-easy-crop": "^5.2.0",
     "react-image-crop": "^11.0.7",
     "react-loader-spinner": "^6.1.6",
+    "react-modal": "^3.16.3",
     "react-rnd": "^10.4.13",
     "react-router-dom": "^7.1.1",
+    "react-scroll": "^1.9.0",
     "react-tooltip": "^5.28.0",
     "sweetalert2": "^11.14.4"
   },

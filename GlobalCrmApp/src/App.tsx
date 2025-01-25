@@ -23,6 +23,7 @@ import ResetPasswordModal from './routes/ResetPasswordModal';
 import ProtectedRoute from './components/ProtectedRoute';
 import ClientToolBar from './components/ClientToolbar';
 import EditProfile from './routes/EditProfile';
+import ReleaseAccount from './routes/appmanagment/ReleaseAccount';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -93,6 +94,7 @@ function App() {
             <Route element={<ProtectedRoute allowedRoles={['GlobalAdmin']} />}>
               <Route path="users" element={<Users />} />
               <Route path="Customer-Directory" element={<Customer />} />
+              <Route path='ReleaseAccount' element={<ReleaseAccount />} />
               <Route path="permissions" element={<CustomerPermissionUser onClose={onClose} />} />
               <Route path="/roles" element={<Roles />} />
               <Route path="add-user" element={

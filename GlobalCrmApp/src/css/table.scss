@@ -361,3 +361,31 @@ body.darkmode .tooltip {
   background-color: #333;
   color: white;
 }
+
+.h1-container {
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0f20df;
+}
+
+.h1-container .badge {
+  background-color: #e0f2fe;
+  color: #0369a1;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.25rem;
+}
+
+body.darkmode .h1-container {
+  color: #fff;
+}
+
+body.darkmode .h1-container .badge {
+  background-color: #bfdbfe;
+  color: #1e3a8a;
+}
+

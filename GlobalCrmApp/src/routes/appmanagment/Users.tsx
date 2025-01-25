@@ -7,6 +7,9 @@ import EditUser from './EditUser';
 import { showErrorDialog, showSuccessDialog } from '../../dialogs/dialogs';
 import { DarkModeContext } from '../../contexts/DarkModeContext';
 import '../../css/table.scss';
+import { AiTwotoneLock } from 'react-icons/ai';
+import LockUserModal from './LockUserModal';
+
 
 const Users: React.FC = () => {
   const [users, setUsers] = useState([]);
@@ -17,6 +20,7 @@ const Users: React.FC = () => {
   const [isEditUserOpen, setIsEditUserOpen] = useState(false); 
   const [selectedUserId, setSelectedUserId] = useState<string | null>(null); 
   const [editingJobTitle, setEditingJobTitle] = useState<{ [key: string]: string }>({}); 
+  const [isLockUserModalOpen, setIsLockUserModalOpen] = useState(false);
   const { darkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
@@ -113,6 +117,15 @@ const Users: React.FC = () => {
     setEditingJobTitle({ ...editingJobTitle, [userId]: value });
   };
 
+  const handleLockUserOpen = (userId: string) => {
+    setSelectedUserId(userId);
+    setIsLockUserModalOpen(true);
+  };
+
+  const handleLockUserClose = () => {
+    setIsLockUserModalOpen(false);
+  };
+
   return (
     <div className="users-directory mt-8 p-4">
       <h2 className="text-2xl font-semibold mb-4 text-center">Users Directory</h2>
@@ -126,7 +139,8 @@ const Users: React.FC = () => {
             <th>Username</th>
             <th>Phone Number</th>
             <th>Job Title</th>
-            <th className="status-icon">Status</th>
+            <th className="status-icon">Enabled</th>
+            <th>Locked account</th>
           </tr>
         </thead>
         <tbody>
@@ -168,6 +182,7 @@ const Users: React.FC = () => {
               <td className="status-icon" onClick={() => handleStatusChange(user.id, !user.isEnabled)}>
                 {user.isEnabled ? <FaCheck className="text-green-500" /> : <FaTimes className="text-red-500" />}
               </td>
+              <td><AiTwotoneLock className='icon-button' onClick={() => handleLockUserOpen(user.id)} /></td>
             </tr>
           ))}
         </tbody>
@@ -177,6 +192,14 @@ const Users: React.FC = () => {
       )}
       {isEditUserOpen && selectedUserId !== null && (
         <EditUser userId={selectedUserId} onClose={handleEditUserClose} refreshTable={refreshTable} />
+      )}
+      {isLockUserModalOpen && selectedUserId !== null && (
+        <LockUserModal
+          isOpen={isLockUserModalOpen}
+          onRequestClose={handleLockUserClose}
+          userId={selectedUserId}
+          refreshTable={refreshTable}
+        />
       )}
     </div>
   );

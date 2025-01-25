@@ -90,6 +90,7 @@
       padding: 0.625rem;
       width: 100%;
       font-size: 0.875rem;
+      color: #000;
 
       &:focus {
         outline: none;
@@ -99,7 +100,7 @@
       &.dark {
         background-color: #4b5563;
         border-color: #6b7280;
-        color: #d1d5db;
+        
       }
     }
 
