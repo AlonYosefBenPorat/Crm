@@ -2,20 +2,17 @@
   .container {
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
-    color: #000000;
+    color: #5d5c5c;
   }
 
   .header {
     border: 1px solid #000000;
-    background-color: #f0f0f0;
     padding: 10px;
     text-align: center;
   }
 
   .introduction {
     border: 1px solid #000000;
-    background-color: #e0e0e0;
     padding: 10px;
     margin-top: 10px;
     text-align: center;
@@ -29,8 +26,7 @@
   }
 
   .sidebar {
-    border: px solid rgb(54, 10, 197);
-    background-color: #f7f4f4;
+    border: 2px solid rgb(54, 10, 197);
     margin-top: 10px;
   }
 
@@ -39,20 +35,6 @@
     color: blue;
     cursor: pointer;
     padding: 10px;
-    background-color: #f0f0f0;
-  }
-
-  .dark-mode .sidebar {
-    background-color: #333333;
-  }
-
-  .dark-mode .sidebar ul li {
-    margin-bottom: 10px;
-    color: lightblue;
-    cursor: pointer;
-    padding: 10px;
-    border: 1px solid #13c4d1;
-    background-color: #444444;
   }
 
   .content {
@@ -144,6 +126,7 @@
   }
 
 
+
   p.underline {
     color: blue;
     text-decoration: underline;
@@ -156,18 +139,47 @@
     text-decoration: underline;
   }
 
-  .dark-mode .container {
-    background-color: #121212;
-    color: #ffffff;
-  }
+  
+  &.dark-mode {
+    .container {
+      color: #ffffff;
+    }
 
-  .dark-mode .header {
-    border: 1px solid #ffffff;
-    background-color: #333333;
-  }
+    .header {
+      border: 1px solid #ffffff;
+      color: #ffffff;
+    }
 
-  .dark-mode .introduction {
-    border: 1px solid #ffffff;
-    background-color: #444444;
+    .introduction {
+      border: 1px solid #ffffff;
+      color: #ffffff;
+    }
+
+    .sidebar {
+      color: #ffffff;
+    }
+
+    .sidebar ul li {
+      color: lightblue;
+      border: 1px solid #13c4d1;
+    }
+
+    .content {
+      color: #ffffff;
+    }
+
+    .card {
+      color: s#ffffff;
+    }
+
+    .modal {
+      color: #ffffff;
+      border: 1px solid #ffffff;
+      background-color: rgb(33, 32, 32); 
+    }
+
+    h2, h3, h4, h5, h6, p, ul, ol {
+      color: #ffffff;
+    }
   }
 }
