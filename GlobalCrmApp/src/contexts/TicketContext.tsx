@@ -53,7 +53,7 @@ export const TicketProvider: React.FC<TicketProviderProps> = ({ children }) => {
 export const useTicketContext = () => {
   const context = useContext(TicketContext);
   if (!context) {
-    throw new Error('useTicketContext must be used within a TicketProvider');
+    throw new Error('useTicketContext must be used within The TicketProvider');
   }
   return context;
 };
