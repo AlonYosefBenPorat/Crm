@@ -62,7 +62,6 @@ function App() {
       <NavBar openModal={openModal} openResetPasswordModal={openResetPasswordModal} />
       <Routes>
         
-         <Route path="/SystemInfo" element={<SystemInfo />} />
      </Routes>
       {isLoggedIn ? (
         <LayoutWithSidebar isLoggedIn={isLoggedIn}>
