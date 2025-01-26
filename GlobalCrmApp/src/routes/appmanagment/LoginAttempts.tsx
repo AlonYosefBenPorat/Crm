@@ -154,7 +154,7 @@ const LoginAttempts: React.FC = () => {
       chart: {
         height: 420,
         width: "100%",
-        type: "pie" as const, // Ensure type is one of the allowed string literals
+        type: "pie" as const, 
       },
       stroke: {
         colors: ["white"],
@@ -241,11 +241,11 @@ const LoginAttempts: React.FC = () => {
             </div>
           </div>
           <div className="week-navigation">
-            <button onClick={handlePreviousWeek} className="icon-button">
+            <button title='previous' aria-label='previous' onClick={handlePreviousWeek} className="icon-button">
               <FaArrowLeft />
             </button>
-            <button onClick={handleNextWeek} className="icon-button">
-              <FaArrowRight />
+            <button title='Next' aria-label='Next' onClick={handleNextWeek} className="icon-button">
+              <FaArrowRight  title='Next'/>
             </button>
           </div>
           <div className="table-container">

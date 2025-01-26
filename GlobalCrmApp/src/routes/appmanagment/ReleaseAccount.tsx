@@ -90,7 +90,7 @@ const ReleaseAccount = () => {
               <td>{user.remainingTime || calculateRemainingTime(user.lockoutEnd)}</td>
               <td>{user.accessFailedCount}</td>
               <td>
-                <AiTwotoneUnlock className='icon-button' onClick={() => handleUnlockUser(user.id)} style={{ cursor: 'pointer' }} />
+                <AiTwotoneUnlock title='Unlock User' aria-label='Unlock User' className='icon-button' onClick={() => handleUnlockUser(user.id)} style={{ cursor: 'pointer' }} />
               </td>
             </tr>
           ))}

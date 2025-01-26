@@ -203,9 +203,9 @@ const TicketCrm: React.FC = () => {
         />
         {!showAll && (
           <>
-            <RiArrowLeftSLine aria-label='Previous Page' className='icon-button' onClick={handlePreviousPage} />
+            <RiArrowLeftSLine title='Previous Page' className='icon-button' onClick={handlePreviousPage} />
             <span>Page {currentPage} of {totalPages}</span>
-            <RiArrowRightSLine aria-label='Next Page' className='icon-button' onClick={handleNextPage}  />
+            <RiArrowRightSLine title='Next Page' aria-label='Next Page' className='icon-button' onClick={handleNextPage}  />
           </>
         )}
       </div>

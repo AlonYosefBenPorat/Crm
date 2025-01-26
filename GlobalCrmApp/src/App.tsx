@@ -24,6 +24,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import ClientToolBar from './components/ClientToolbar';
 import EditProfile from './routes/EditProfile';
 import ReleaseAccount from './routes/appmanagment/ReleaseAccount';
+import About from './routes/documentation/About';
+
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -67,6 +69,7 @@ function App() {
           <Routes>
             {/* CRM Public Routes */}
             <Route path='landing-page' element={<LandingPage />} />
+            
            
 
             {/* CRM Protected Routes  All Users With Role assigned */}
@@ -114,7 +117,8 @@ function App() {
       ) : (
         <Routes>
           <Route path="login" element={<LoginModal isModalOpen={isModalOpen} closeModal={closeModal} onLogin={handleLogin} />} />
-          <Route path="/" element={<LandingPage />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route path="About" element={<About />} />
         </Routes>
       )}
       <LoginModal isModalOpen={isModalOpen} closeModal={closeModal} />

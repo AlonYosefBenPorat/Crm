@@ -1,0 +1,173 @@
+.about-page {
+  .container {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    color: #000000;
+  }
+
+  .header {
+    border: 1px solid #000000;
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .introduction {
+    border: 1px solid #000000;
+    background-color: #e0e0e0;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .sidebar {
+    border: px solid rgb(54, 10, 197);
+    background-color: #f7f4f4;
+    margin-top: 10px;
+  }
+
+  .sidebar ul li {
+    margin-bottom: 10px;
+    color: blue;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #f0f0f0;
+  }
+
+  .dark-mode .sidebar {
+    background-color: #333333;
+  }
+
+  .dark-mode .sidebar ul li {
+    margin-bottom: 10px;
+    color: lightblue;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #13c4d1;
+    background-color: #444444;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .card {
+    border: 2px solid rgb(7, 155, 168);
+    padding: 4px;
+    margin-top: 1px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .card:hover {
+    font-weight: bold;
+  }
+
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    z-index: 1000;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .sidebar ul li:hover {
+    font-weight: bold;
+  }
+
+  .sidebar ul li.selected {
+    font-weight: bold;
+  }
+
+  h3 {
+    font-weight: bold;
+  }
+
+  h2 {
+    font-weight: bold;
+    text-align: center;
+    color: rgb(17, 25, 232);
+    font-size: 20px;
+  }
+
+  h4 {
+    font-weight: bold;
+    text-align: center;
+    background-color: gray;
+    padding-bottom: 20px;
+  }
+
+  h6 {
+    font-size: 19px;
+    text-align: center;
+  }
+
+  .bold-underline {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  ul {
+    font-size: 19px;
+    text-align: left;
+  }
+
+  ol {
+    list-style-type: disc;
+    margin-left: 20px;
+    font-size: 19px;
+  }
+
+
+  p.underline {
+    color: blue;
+    text-decoration: underline;
+    text-align: center;
+  }
+
+  article h5 {
+    font-size: 19px;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .dark-mode .container {
+    background-color: #121212;
+    color: #ffffff;
+  }
+
+  .dark-mode .header {
+    border: 1px solid #ffffff;
+    background-color: #333333;
+  }
+
+  .dark-mode .introduction {
+    border: 1px solid #ffffff;
+    background-color: #444444;
+  }
+}

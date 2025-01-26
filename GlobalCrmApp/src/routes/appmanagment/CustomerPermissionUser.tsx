@@ -251,11 +251,11 @@ const CustomerPermissionUser = ({ onClose }) => {
               ))}
             </select>
             <div className="flex justify-end">
-              <button type="button" onClick={handleDeletePermissionForAllCustomerOneClick} className="icon-button">
-                <AiOutlineUserDelete />
+              <button  title= 'Remove All Permissions' type="button" onClick={handleDeletePermissionForAllCustomerOneClick} className="icon-button">
+                <AiOutlineUserDelete aria-label='Remove All Permissions'  />
               </button>
-              <button type="button" onClick={notifyUserPermission} className="icon-button">
-                <MdOutlineMailOutline />
+              <button title='Send user Permissions' type="button" onClick={notifyUserPermission} className="icon-button">
+                <MdOutlineMailOutline aria-label='Send user Permissions' />
               </button>
             </div>
           </form>
@@ -298,7 +298,7 @@ const CustomerPermissionUser = ({ onClose }) => {
                 </td>
                 <td className="notify-user-cell">
                   <button type="button" onClick={() => notifyUserPermissionForCustomer(customer.id)} className="icon-button">
-                    <MdOutlineMailOutline aria-label='send user Email' />
+                    <MdOutlineMailOutline aria-label='send user permissions by Email' title='send user permissions by Email' />
                   </button>
                 </td>
               </tr>
@@ -306,13 +306,13 @@ const CustomerPermissionUser = ({ onClose }) => {
           </tbody>
         </table>
         <div className="pagination">
-          <button type="button" onClick={handlePreviousPage} className="icon-button">
-            <AiOutlineLeft />
+          <button title='previous' type="button" onClick={handlePreviousPage} className="icon-button">
+            <AiOutlineLeft aria-label='previous' />
           </button>
-          <button type="button" onClick={handleNextPage} className="icon-button">
-            <AiOutlineRight />
+          <button title='Next' type="button" onClick={handleNextPage} className="icon-button">
+            <AiOutlineRight aria-label='next'/>
           </button>
-          <button type="button" onClick={handleShowAll} className="btn">
+          <button title='Show All' aria-label='Show All' type="button" onClick={handleShowAll} className="btn">
             Show All
           </button>
         </div>

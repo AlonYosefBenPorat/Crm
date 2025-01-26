@@ -78,9 +78,11 @@ const NavBar: React.FC<NavBarProps> = ({ openModal, openResetPasswordModal }) =>
   return (
     <nav id="app-nav" className="fixed-nav">
       <div className="nav-left">
-        <NavLink to="/SystemInfo">
-          <BsInfoCircle className="icon-button" />
+        {!isLoggedIn && (
+        <NavLink to="About">
+          <BsInfoCircle className="icon-button" title="About" aria-label="About" />
         </NavLink>
+      )}
         <img src="https://globalfrontendcrm.blob.core.windows.net/frontendcrm/CRM-Logo.png?sp=r&st=2025-01-03T16:14:44Z&se=2027-03-31T23:14:44Z&spr=https&sv=2022-11-02&sr=b&sig=Hg9tt9VgzQv9aYlK%2BIAbnVp4op6naXlEFXHGltHbv7k%3D" alt="AlonCRMLogo" className="logo" />
         {isLoggedIn && <h3>Welcome {userLastName} {userFirstName}</h3>}
       </div>
@@ -96,24 +98,24 @@ const NavBar: React.FC<NavBarProps> = ({ openModal, openResetPasswordModal }) =>
                 onClick={openModal}
               />
             ) : (
-              <CgProfile className="icon-button" aria-description="profile" onClick={openModal} />
+              <CgProfile title="User oprations" className="icon-button" aria-description="profile" onClick={openModal} />
             )}
           </div>
           <div id="dropdown" className="dropdown-menu">
             <ul className="dropdown-list" aria-labelledby="dropdownDefaultButton">
               {!isLoggedIn ? (
-                <li>
+                <li className="mt-4">
                   <a href="#" onClick={openModal} className="dropdown-item">Login</a>
                 </li>
               ) : (
                 <>
-                  <li>
+                  <li className="mt-4">
                     <a href="/" onClick={handleLogout} className="dropdown-item">Logout</a>
                   </li>
-                  <li>
+                  <li className="mt-4">
                     <a href="edit-profile" className="dropdown-item">Edit My Profile</a>
                   </li>
-                  <li>
+                  <li className="mt-4">
                     <a onClick={openResetPasswordModal} className="dropdown-item">Reset Password</a>
                   </li>
                 </>

@@ -182,7 +182,7 @@ const Users: React.FC = () => {
               <td className="status-icon" onClick={() => handleStatusChange(user.id, !user.isEnabled)}>
                 {user.isEnabled ? <FaCheck className="text-green-500" /> : <FaTimes className="text-red-500" />}
               </td>
-              <td><AiTwotoneLock className='icon-button' onClick={() => handleLockUserOpen(user.id)} /></td>
+              <td><AiTwotoneLock title='Lock User' aria-label='Lock User' className='icon-button' onClick={() => handleLockUserOpen(user.id)} /></td>
             </tr>
           ))}
         </tbody>
