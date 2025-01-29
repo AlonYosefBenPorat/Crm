@@ -130,7 +130,7 @@ const Server: React.FC<ServerProps> = ({ onMinimize, customerId }) => {
       refreshTable();
     } catch (error) {
       setError('Failed to save server');
-      showErrorDialog('Failed to save server');
+      showErrorDialog('Failed to save server- c missing Write permissions- contact admin');
     }
   };
 
@@ -151,7 +151,7 @@ const Server: React.FC<ServerProps> = ({ onMinimize, customerId }) => {
         refreshTable();
       } catch (error) {
         setError('Failed to delete server');
-        showErrorDialog('Failed to delete server');
+        showErrorDialog('Failed to delete server, missing Delete permissions- contact admin');
       }
     }
   };

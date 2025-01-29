@@ -129,7 +129,7 @@ const Gatway: React.FC<GatwayProps> = ({ onMinimize, customerId }) => {
       refreshTable();
     } catch (error) {
       setError('Failed to save firewall');
-      showErrorDialog('Failed to save firewall');
+      showErrorDialog('Failed to save firewall, missing Write permission? contact your admin');
     }
   };
 
@@ -150,7 +150,7 @@ const Gatway: React.FC<GatwayProps> = ({ onMinimize, customerId }) => {
         refreshTable();
       } catch (error) {
         setError('Failed to delete firewall');
-        showErrorDialog('Failed to delete firewall');
+        showErrorDialog('Failed to delete firewall, missing Delete  permission? contact your admin');
       }
     }
   };

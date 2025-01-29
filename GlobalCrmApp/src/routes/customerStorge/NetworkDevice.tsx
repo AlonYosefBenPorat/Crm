@@ -103,7 +103,7 @@ const NetworkDevice: React.FC<NetworkDeviceProps> = ({ onMinimize, customerId })
 
   const handleSaveNetworkDevice = async () => {
     try {
-      console.log('Adding network device data:', newNetworkDevice); // Log the data being sent
+     
       if (editableNetworkDeviceId) {
         await updateNetworkDeviceData(customerId, editableNetworkDeviceId, updatedNetworkDeviceData);
         showSuccessDialog('Network device updated successfully');
@@ -128,7 +128,7 @@ const NetworkDevice: React.FC<NetworkDeviceProps> = ({ onMinimize, customerId })
     } catch (error) {
       console.error('Error adding network device data:', error.response); // Log the error response
       setError('Failed to save network device');
-      showErrorDialog('Failed to save network device');
+      showErrorDialog('Failed to save network device,cheak all fields or Write permissions, contact the admin');
     }
   };
 
@@ -149,7 +149,7 @@ const NetworkDevice: React.FC<NetworkDeviceProps> = ({ onMinimize, customerId })
         refreshTable();
       } catch (error) {
         setError('Failed to delete network device');
-        showErrorDialog('Failed to delete network device');
+        showErrorDialog('Failed to delete network device, Missing Delete permissions?, contact the admin');
       }
     }
   };

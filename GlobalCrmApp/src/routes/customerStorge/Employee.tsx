@@ -96,7 +96,7 @@ const Employee: React.FC<EmployeeProps> = ({ onMinimize, customerId }) => {
       refreshTable();
     } catch (error) {
       setError('Failed to save employee');
-      showErrorDialog('Failed to save employee');
+      showErrorDialog('Failed to save employee. missing Write permissions? contact your admin');
     }
   };
 
@@ -117,7 +117,7 @@ const Employee: React.FC<EmployeeProps> = ({ onMinimize, customerId }) => {
         refreshTable();
       } catch (error) {
         setError('Failed to delete employee');
-        showErrorDialog('Failed to delete employee');
+        showErrorDialog('Failed to delete employee,missing Delete permissions? contact your admin');
       }
     }
   };
@@ -129,7 +129,7 @@ const Employee: React.FC<EmployeeProps> = ({ onMinimize, customerId }) => {
       refreshTable();
     } catch (error) {
       setError('Failed to update employee status');
-      showErrorDialog('Failed to update employee status');
+      showErrorDialog('Failed to update employee status,missing Write permissions? contact your admin');
     }
   };
 

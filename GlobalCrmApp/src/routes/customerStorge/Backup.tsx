@@ -135,7 +135,7 @@ const Backup: React.FC<BackupProps> = ({ onMinimize, customerId }) => {
     } catch (error) {
       console.error('Error adding backup data:', error.response); // Log the error response
       setError('Failed to save backup');
-      showErrorDialog('Failed to save backup');
+      showErrorDialog('Failed to save backup,missing Write pewmission? contact admin');
     }
   };
 
@@ -156,7 +156,7 @@ const Backup: React.FC<BackupProps> = ({ onMinimize, customerId }) => {
         refreshTable();
       } catch (error) {
         setError('Failed to delete backup');
-        showErrorDialog('Failed to delete backup');
+        showErrorDialog('Failed to delete backup. missing Delete permission? contact admin');
       }
     }
   };

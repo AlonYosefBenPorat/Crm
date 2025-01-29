@@ -120,7 +120,7 @@ const Asset: React.FC<AssetProps> = ({ onClose, customerId, customerName }) => {
     } catch (error) {
       console.error('Error adding asset data:', error.response); 
       setError('Failed to save asset');
-      showErrorDialog('Failed to save asset');
+      showErrorDialog('Failed to save asset, missing permissions? contact your administrator');
     }
   };
 
@@ -141,7 +141,7 @@ const Asset: React.FC<AssetProps> = ({ onClose, customerId, customerName }) => {
         refreshTable();
       } catch (error) {
         setError('Failed to delete asset');
-        showErrorDialog('Failed to delete asset');
+        showErrorDialog('Failed to delete assetת ,missing permissions? contact your administrator');
       }
     }
   };
